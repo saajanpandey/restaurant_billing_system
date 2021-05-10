@@ -117,7 +117,6 @@ public class Login_Form extends javax.swing.JFrame {
 
     private void exit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_buttonActionPerformed
         // TODO add your handling code here:
-        
         System.exit(0);
     }//GEN-LAST:event_exit_buttonActionPerformed
 
@@ -128,40 +127,44 @@ public class Login_Form extends javax.swing.JFrame {
            
            Connection con = DriverManager.getConnection
                    ("jdbc:mysql://localhost:3306/sales","root","");
-           String b="";
            if(radio_salesperson.isSelected())
            {
-                b= "salesperson";
+                
+               PreparedStatement ps= con.prepareStatement
+             ("Select * from salesperson where username=? AND password=? ");
+           
+            ps.setString(1,username.getText());
+            ps.setString(2,password.getText());
+            ResultSet rs = ps.executeQuery();
+            if(rs.next())
+            {
+                    this.dispose();
+                   Salesperson_DashBoard sp = new Salesperson_DashBoard();
+                   sp.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"wrong username or password");
+           }
+                
            }
            else if(radio_admin.isSelected())
            {
-               b= "admin";
+                 PreparedStatement ps= con.prepareStatement
+             ("Select * from admin where username=? AND password=? ");
+           
+            ps.setString(1,username.getText());
+            ps.setString(2,password.getText());
+            ResultSet rs = ps.executeQuery();
+            if(rs.next())
+            {
+                    this.dispose();
+                    Admin_DashBoard ad = new Admin_DashBoard();
+                    ad.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"wrong username or password");
            }
-           
-           PreparedStatement ps= con.prepareStatement
-        ("Select * from login where username=? AND password=? AND user_type=?");
-           
-           ps.setString(1,username.getText());
-           ps.setString(2,password.getText());
-           ps.setString(3,b);
-           ResultSet rs = ps.executeQuery();
-           
-           if(rs.next()){
-           
-               if(radio_admin.isSelected())
-               {
-                   this.dispose();
-                   Admin_DashBoard ad = new Admin_DashBoard();
-                   ad.setVisible(true);
-               }
-               else{
-                   this.dispose();
-                   Salesperson_DashBoard sp = new Salesperson_DashBoard();
-                   sp.setVisible(true);
-               }
-           }
-           else{
-                JOptionPane.showMessageDialog(null,"wrong user_type selected");
+               
            }
         }
         catch(Exception e)

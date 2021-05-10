@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2021 at 03:49 PM
+-- Generation Time: May 10, 2021 at 05:43 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -24,24 +24,51 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE `login` (
+CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `username` varchar(25) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `user_type` varchar(15) NOT NULL
+  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `login`
+-- Dumping data for table `admin`
 --
 
-INSERT INTO `login` (`id`, `name`, `username`, `password`, `user_type`) VALUES
-(1, 'saajan', 'admin', 'admin', 'admin'),
-(2, 'ram', 'ram', 'ram', 'salesperson');
+INSERT INTO `admin` (`id`, `name`, `username`, `password`) VALUES
+(1, 'admin', 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `salesperson`
+--
+
+CREATE TABLE `salesperson` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `username` varchar(25) NOT NULL,
+  `password` varchar(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `salesperson`
+--
+ALTER TABLE `salesperson`
+  ADD PRIMARY KEY (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

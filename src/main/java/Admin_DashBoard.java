@@ -15,7 +15,6 @@ public class Admin_DashBoard extends javax.swing.JFrame {
      */
     public Admin_DashBoard() {
         initComponents();
-        setTitle("Admin DashBoard");
     }
 
     /**
@@ -27,92 +26,28 @@ public class Admin_DashBoard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        home_panel = new javax.swing.JPanel();
-        sales_panel = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        New = new javax.swing.JMenu();
-        account_item = new javax.swing.JMenuItem();
-        home = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 0, 0));
-
-        home_panel.setBackground(new java.awt.Color(51, 255, 51));
-
-        javax.swing.GroupLayout home_panelLayout = new javax.swing.GroupLayout(home_panel);
-        home_panel.setLayout(home_panelLayout);
-        home_panelLayout.setHorizontalGroup(
-            home_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 719, Short.MAX_VALUE)
-        );
-        home_panelLayout.setVerticalGroup(
-            home_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout sales_panelLayout = new javax.swing.GroupLayout(sales_panel);
-        sales_panel.setLayout(sales_panelLayout);
-        sales_panelLayout.setHorizontalGroup(
-            sales_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 719, Short.MAX_VALUE)
-        );
-        sales_panelLayout.setVerticalGroup(
-            sales_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 432, Short.MAX_VALUE)
-        );
-
-        New.setText("New");
-
-        account_item.setText("Saleperson Account");
-        account_item.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                account_itemActionPerformed(evt);
-            }
-        });
-        New.add(account_item);
-
-        home.setText("Home");
-        home.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeActionPerformed(evt);
-            }
-        });
-        New.add(home);
-
-        jMenuBar1.add(New);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(home_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(sales_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 657, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(home_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(sales_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 428, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void account_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_account_itemActionPerformed
-            // TODO add your handling code here:
-            
-            sales_panel.setVisible(true);
-            home_panel.setVisible(false);
-        
-    }//GEN-LAST:event_account_itemActionPerformed
-
-    private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
-        // TODO add your handling code here:
-        home_panel.setVisible(true);
-    }//GEN-LAST:event_homeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,11 +85,7 @@ public class Admin_DashBoard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu New;
-    private javax.swing.JMenuItem account_item;
-    private javax.swing.JMenuItem home;
-    private javax.swing.JPanel home_panel;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel sales_panel;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }
