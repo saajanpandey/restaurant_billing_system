@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2021 at 05:43 AM
+-- Generation Time: May 11, 2021 at 05:57 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sales`
+-- Database: `rbs`
 --
 
 -- --------------------------------------------------------
@@ -44,15 +44,22 @@ INSERT INTO `admin` (`id`, `name`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `salesperson`
+-- Table structure for table `waiter`
 --
 
-CREATE TABLE `salesperson` (
+CREATE TABLE `waiter` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `waiter`
+--
+
+INSERT INTO `waiter` (`id`, `name`, `username`, `password`) VALUES
+(1, 'ram', 'ram', '1234');
 
 --
 -- Indexes for dumped tables
@@ -65,9 +72,9 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `salesperson`
+-- Indexes for table `waiter`
 --
-ALTER TABLE `salesperson`
+ALTER TABLE `waiter`
   ADD PRIMARY KEY (`id`);
 COMMIT;
 
