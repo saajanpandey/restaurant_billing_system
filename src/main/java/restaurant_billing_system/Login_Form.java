@@ -41,6 +41,7 @@ public class Login_Form extends javax.swing.JFrame {
         password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Username");
 
@@ -160,6 +161,8 @@ public class Login_Form extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null,"wrong username or password");
+                username.setText("");
+                password.setText("");
            }
                
            }

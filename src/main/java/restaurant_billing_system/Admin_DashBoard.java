@@ -16,6 +16,7 @@ public class Admin_DashBoard extends javax.swing.JFrame {
      */
     public Admin_DashBoard() {
         initComponents();
+        setTitle("Admin DashBoard");
     }
 
     /**
@@ -27,21 +28,162 @@ public class Admin_DashBoard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        add_product = new javax.swing.JButton();
+        item_report = new javax.swing.JButton();
+        logout = new javax.swing.JButton();
+        sales_report = new javax.swing.JButton();
+        change_password = new javax.swing.JButton();
+        add_waiter = new javax.swing.JButton();
+        waiter_details = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+
+        add_product.setText("Add Food Items");
+        add_product.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_productActionPerformed(evt);
+            }
+        });
+
+        item_report.setText("Items Report");
+        item_report.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                item_reportActionPerformed(evt);
+            }
+        });
+
+        logout.setText("Logout");
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
+
+        sales_report.setText("Sales Report");
+        sales_report.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sales_reportActionPerformed(evt);
+            }
+        });
+
+        change_password.setText("Change Password");
+        change_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                change_passwordActionPerformed(evt);
+            }
+        });
+
+        add_waiter.setText("Add Waiter");
+        add_waiter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_waiterActionPerformed(evt);
+            }
+        });
+
+        waiter_details.setText("Waiter Details");
+        waiter_details.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                waiter_detailsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(add_product)
+                .addGap(39, 39, 39)
+                .addComponent(item_report)
+                .addGap(39, 39, 39)
+                .addComponent(sales_report)
+                .addGap(36, 36, 36)
+                .addComponent(add_waiter)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(waiter_details)
+                .addGap(29, 29, 29)
+                .addComponent(change_password)
+                .addGap(35, 35, 35)
+                .addComponent(logout)
+                .addGap(19, 19, 19))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(add_product)
+                    .addComponent(item_report)
+                    .addComponent(logout)
+                    .addComponent(sales_report)
+                    .addComponent(change_password)
+                    .addComponent(add_waiter)
+                    .addComponent(waiter_details))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 410, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        Login_Form log = new Login_Form();
+        log.setVisible(true);
+    }//GEN-LAST:event_logoutActionPerformed
+
+    private void sales_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sales_reportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sales_reportActionPerformed
+
+    private void change_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_change_passwordActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        Change_Password cp =new Change_Password();
+        cp.setVisible(true);
+    }//GEN-LAST:event_change_passwordActionPerformed
+
+    private void add_waiterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_waiterActionPerformed
+        // TODO add your handling code here:
+        Add_Waiter w = new Add_Waiter();
+        w.setVisible(true);
+    }//GEN-LAST:event_add_waiterActionPerformed
+
+    private void item_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_reportActionPerformed
+        // TODO add your handling code here:
+        Food_Details fd = new Food_Details();
+        fd.setVisible(true);
+    }//GEN-LAST:event_item_reportActionPerformed
+
+    private void add_productActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_productActionPerformed
+        // TODO add your handling code here:
+        Add_FoodItems add = new Add_FoodItems();
+        add.setVisible(true);
+    }//GEN-LAST:event_add_productActionPerformed
+
+    private void waiter_detailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_waiter_detailsActionPerformed
+        // TODO add your handling code here:
+        Waiter_Details wd = new Waiter_Details();
+        wd.setVisible(true);
+    }//GEN-LAST:event_waiter_detailsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +221,13 @@ public class Admin_DashBoard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton add_product;
+    private javax.swing.JButton add_waiter;
+    private javax.swing.JButton change_password;
+    private javax.swing.JButton item_report;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton logout;
+    private javax.swing.JButton sales_report;
+    private javax.swing.JButton waiter_details;
     // End of variables declaration//GEN-END:variables
 }
