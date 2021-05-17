@@ -6,6 +6,7 @@
 package restaurant_billing_system;
 import javax.swing.*;
 import java.sql.*;
+import javax.swing.text.*;
 
 /**
  *
@@ -18,7 +19,34 @@ public class Add_FoodItems extends javax.swing.JFrame {
      */
     public Add_FoodItems() {
         initComponents();
+        price.setDocument(new JTextFieldLimit(4));
     }
+  class JTextFieldLimit extends PlainDocument {
+  private int limit;
+  JTextFieldLimit(int limit) {
+    super();
+    this.limit = limit;
+  }
+
+  JTextFieldLimit(int limit, boolean upper) {
+    super();
+    this.limit = limit;
+  }
+
+  @Override 
+  public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+    if (str == null)
+      return;
+
+    if ((getLength() + str.length()) <= limit) {
+      super.insertString(offset, str, attr);
+    }
+  }
+}
+  
+
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -136,6 +164,8 @@ public class Add_FoodItems extends javax.swing.JFrame {
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
         
         PreparedStatement ps = con.prepareStatement("Insert into food(name,price) values(?,?) ");
+        
+        
          int price1 = Integer.parseInt(price.getText());
         ps.setString(1,name.getText());
         ps.setInt(2,price1);
@@ -150,6 +180,8 @@ public class Add_FoodItems extends javax.swing.JFrame {
        catch(Exception e)
        {
            JOptionPane.showMessageDialog(null,"Food Item Not Registered","Alert",JOptionPane.WARNING_MESSAGE);
+           name.setText("");
+          price.setText("");
        }
         
     }//GEN-LAST:event_insertActionPerformed

@@ -130,14 +130,14 @@ public class Login_Form extends javax.swing.JFrame {
                 
                PreparedStatement ps= con.prepareStatement
              ("Select * from waiter where username=? AND password=? ");
-           
+             String username1 = username.getText();
             ps.setString(1,username.getText());
             ps.setString(2,password.getText());
             ResultSet rs = ps.executeQuery();
             if(rs.next())
             {
                     this.dispose();
-                   Waiter_DashBoard sp = new Waiter_DashBoard();
+                   Waiter_DashBoard sp = new Waiter_DashBoard(username1);
                    sp.setVisible(true);
             }
             else{

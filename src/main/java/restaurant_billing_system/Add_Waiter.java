@@ -7,6 +7,9 @@ package restaurant_billing_system;
 
 import javax.swing.*;
 import java.sql.*;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 /**
  *
  * @author Saajan
@@ -19,7 +22,30 @@ public class Add_Waiter extends javax.swing.JFrame {
     public Add_Waiter() {
         initComponents();
         setTitle("Add Waiter");
+       contact.setDocument(new JTextFieldLimit(10));
     }
+    class JTextFieldLimit extends PlainDocument {
+  private int limit;
+  JTextFieldLimit(int limit) {
+    super();
+    this.limit = limit;
+  }
+
+  JTextFieldLimit(int limit, boolean upper) {
+    super();
+    this.limit = limit;
+  }
+
+  @Override 
+  public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+    if (str == null)
+      return;
+
+    if ((getLength() + str.length()) <= limit) {
+      super.insertString(offset, str, attr);
+    }
+  }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,7 +99,7 @@ public class Add_Waiter extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,10 +113,10 @@ public class Add_Waiter extends javax.swing.JFrame {
                             .addComponent(username)
                             .addComponent(contact)
                             .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(add_waiter)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                        .addGap(101, 101, 101)
                         .addComponent(cancel)))
                 .addContainerGap(183, Short.MAX_VALUE))
         );
@@ -113,11 +139,11 @@ public class Add_Waiter extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(60, 60, 60)
+                .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add_waiter)
                     .addComponent(cancel))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

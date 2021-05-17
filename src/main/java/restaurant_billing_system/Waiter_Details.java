@@ -9,6 +9,9 @@ import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 import net.proteanit.sql.DbUtils;
 
 
@@ -24,6 +27,7 @@ public class Waiter_Details extends javax.swing.JFrame {
     public Waiter_Details() {
         initComponents();
         setTitle("Waiter Details");
+        contact.setDocument(new JTextFieldLimit(10));
         try{
                    Class.forName("com.mysql.cj.jdbc.Driver");
                    
@@ -49,6 +53,28 @@ public class Waiter_Details extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null,"No Data Found","Alert",JOptionPane.WARNING_MESSAGE);
                 }
     }
+     class JTextFieldLimit extends PlainDocument {
+  private int limit;
+  JTextFieldLimit(int limit) {
+    super();
+    this.limit = limit;
+  }
+
+  JTextFieldLimit(int limit, boolean upper) {
+    super();
+    this.limit = limit;
+  }
+
+  @Override 
+  public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+    if (str == null)
+      return;
+
+    if ((getLength() + str.length()) <= limit) {
+      super.insertString(offset, str, attr);
+    }
+  }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
