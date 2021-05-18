@@ -70,7 +70,7 @@ public class Waiter_DashBoard extends javax.swing.JFrame {
             }
         });
 
-        take_order.setText("Take Order");
+        take_order.setText("Take Order and Bill");
 
         book.setText("Book a table");
         book.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +88,7 @@ public class Waiter_DashBoard extends javax.swing.JFrame {
                 .addComponent(take_order)
                 .addGap(80, 80, 80)
                 .addComponent(book)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 288, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
                 .addComponent(change_password_waiter)
                 .addGap(35, 35, 35)
                 .addComponent(logout)

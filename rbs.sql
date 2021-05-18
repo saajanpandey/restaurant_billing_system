@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2021 at 10:35 AM
+-- Generation Time: May 18, 2021 at 06:10 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -52,6 +52,14 @@ CREATE TABLE `category` (
   `name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`) VALUES
+(1, 'Non-Veg'),
+(2, 'Veg');
+
 -- --------------------------------------------------------
 
 --
@@ -62,9 +70,17 @@ CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `table_no` int(11) NOT NULL,
-  `reward_points` int(11) NOT NULL,
-  `contact` varchar(11) NOT NULL
+  `contact` varchar(11) NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`id`, `name`, `table_no`, `contact`, `date`, `time`) VALUES
+(2, '1', 1, '1', '2021-02-02', '10:00:00');
 
 -- --------------------------------------------------------
 
@@ -75,18 +91,18 @@ CREATE TABLE `customer` (
 CREATE TABLE `food` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
-  `price` int(11) NOT NULL
+  `price` int(11) NOT NULL,
+  `category` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `food`
 --
 
-INSERT INTO `food` (`id`, `name`, `price`) VALUES
-(1, '112', 231231),
-(2, 'Pizza', 123),
-(3, 'Burger', 500),
-(4, 'MOMO', 1234);
+INSERT INTO `food` (`id`, `name`, `price`, `category`) VALUES
+(28, 'MOMO', 120, 'Non-Veg'),
+(29, 'MOMO', 120, 'Non-Veg'),
+(30, 'Pizza', 170, 'Non-Veg');
 
 -- --------------------------------------------------------
 
@@ -108,8 +124,7 @@ CREATE TABLE `waiter` (
 
 INSERT INTO `waiter` (`id`, `name`, `username`, `password`, `contact`) VALUES
 (1, 'hello', 'nepal', 'nepal', '1234567'),
-(22, 'sdasd', 'adasd', 'adsasd', 'asdsadsa'),
-(323, 'adasd', 'adasdad', 'adadasda', '9860898105');
+(323, 'Rahul', 'adasdad', 'adadasda', '9860898105');
 
 --
 -- Indexes for dumped tables
@@ -125,6 +140,12 @@ ALTER TABLE `admin`
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customer`
+--
+ALTER TABLE `customer`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -147,13 +168,19 @@ ALTER TABLE `waiter`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `waiter`

@@ -31,7 +31,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="410" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="372" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -50,19 +50,17 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="add_product" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="item_report" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="categories" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="sales_report" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="add_waiter" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="38" max="32767" attributes="0"/>
-                  <Component id="waiter_details" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="change_password" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="logout" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <EmptySpace pref="44" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -72,14 +70,13 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="add_product" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="item_report" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="logout" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="sales_report" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="change_password" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="add_waiter" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="waiter_details" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="categories" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="20" max="32767" attributes="0"/>
+                  <EmptySpace pref="58" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -87,18 +84,10 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="add_product">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Add Food Items"/>
+            <Property name="text" type="java.lang.String" value="Food Items"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="add_productActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="item_report">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Items Report"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="item_reportActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="logout">
@@ -127,18 +116,18 @@
         </Component>
         <Component class="javax.swing.JButton" name="add_waiter">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Add Waiter"/>
+            <Property name="text" type="java.lang.String" value="Waiter"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="add_waiterActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="waiter_details">
+        <Component class="javax.swing.JButton" name="categories">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Waiter Details"/>
+            <Property name="text" type="java.lang.String" value="Food Categories"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="waiter_detailsActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="categoriesActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

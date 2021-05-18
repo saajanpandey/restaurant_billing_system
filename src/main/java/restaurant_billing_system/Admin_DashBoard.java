@@ -30,29 +30,21 @@ public class Admin_DashBoard extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         add_product = new javax.swing.JButton();
-        item_report = new javax.swing.JButton();
         logout = new javax.swing.JButton();
         sales_report = new javax.swing.JButton();
         change_password = new javax.swing.JButton();
         add_waiter = new javax.swing.JButton();
-        waiter_details = new javax.swing.JButton();
+        categories = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
-        add_product.setText("Add Food Items");
+        add_product.setText("Food Items");
         add_product.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 add_productActionPerformed(evt);
-            }
-        });
-
-        item_report.setText("Items Report");
-        item_report.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                item_reportActionPerformed(evt);
             }
         });
 
@@ -77,17 +69,17 @@ public class Admin_DashBoard extends javax.swing.JFrame {
             }
         });
 
-        add_waiter.setText("Add Waiter");
+        add_waiter.setText("Waiter");
         add_waiter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 add_waiterActionPerformed(evt);
             }
         });
 
-        waiter_details.setText("Waiter Details");
-        waiter_details.addActionListener(new java.awt.event.ActionListener() {
+        categories.setText("Food Categories");
+        categories.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                waiter_detailsActionPerformed(evt);
+                categoriesActionPerformed(evt);
             }
         });
 
@@ -98,19 +90,17 @@ public class Admin_DashBoard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(add_product)
-                .addGap(39, 39, 39)
-                .addComponent(item_report)
-                .addGap(39, 39, 39)
+                .addGap(22, 22, 22)
+                .addComponent(categories)
+                .addGap(18, 18, 18)
                 .addComponent(sales_report)
                 .addGap(36, 36, 36)
                 .addComponent(add_waiter)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(waiter_details)
-                .addGap(29, 29, 29)
+                .addGap(36, 36, 36)
                 .addComponent(change_password)
-                .addGap(35, 35, 35)
+                .addGap(36, 36, 36)
                 .addComponent(logout)
-                .addGap(19, 19, 19))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,13 +108,12 @@ public class Admin_DashBoard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add_product)
-                    .addComponent(item_report)
                     .addComponent(logout)
                     .addComponent(sales_report)
                     .addComponent(change_password)
                     .addComponent(add_waiter)
-                    .addComponent(waiter_details))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(categories))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,7 +126,7 @@ public class Admin_DashBoard extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 410, Short.MAX_VALUE))
+                .addGap(0, 372, Short.MAX_VALUE))
         );
 
         pack();
@@ -163,27 +152,21 @@ public class Admin_DashBoard extends javax.swing.JFrame {
 
     private void add_waiterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_waiterActionPerformed
         // TODO add your handling code here:
-        Add_Waiter w = new Add_Waiter();
+        Waiter w = new Waiter();
         w.setVisible(true);
     }//GEN-LAST:event_add_waiterActionPerformed
 
-    private void item_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_reportActionPerformed
-        // TODO add your handling code here:
-        Food_Details fd = new Food_Details();
-        fd.setVisible(true);
-    }//GEN-LAST:event_item_reportActionPerformed
-
     private void add_productActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_productActionPerformed
         // TODO add your handling code here:
-        Add_FoodItems add = new Add_FoodItems();
+        FoodItems add = new FoodItems();
         add.setVisible(true);
     }//GEN-LAST:event_add_productActionPerformed
 
-    private void waiter_detailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_waiter_detailsActionPerformed
+    private void categoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriesActionPerformed
         // TODO add your handling code here:
-        Waiter_Details wd = new Waiter_Details();
-        wd.setVisible(true);
-    }//GEN-LAST:event_waiter_detailsActionPerformed
+        Categories cg = new Categories();
+        cg.setVisible(true);
+    }//GEN-LAST:event_categoriesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,11 +206,10 @@ public class Admin_DashBoard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_product;
     private javax.swing.JButton add_waiter;
+    private javax.swing.JButton categories;
     private javax.swing.JButton change_password;
-    private javax.swing.JButton item_report;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton logout;
     private javax.swing.JButton sales_report;
-    private javax.swing.JButton waiter_details;
     // End of variables declaration//GEN-END:variables
 }

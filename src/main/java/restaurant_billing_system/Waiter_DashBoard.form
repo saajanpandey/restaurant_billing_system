@@ -64,7 +64,7 @@
                   <Component id="take_order" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                   <Component id="book" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="288" max="32767" attributes="0"/>
+                  <EmptySpace pref="252" max="32767" attributes="0"/>
                   <Component id="change_password_waiter" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="logout" min="-2" max="-2" attributes="0"/>
@@ -108,7 +108,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="take_order">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Take Order"/>
+            <Property name="text" type="java.lang.String" value="Take Order and Bill"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="book">
