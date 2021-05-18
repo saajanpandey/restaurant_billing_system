@@ -6,7 +6,6 @@
 package restaurant_billing_system;
 import javax.swing.*;
 import java.sql.*;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.text.*;
 import net.proteanit.sql.DbUtils;
@@ -23,37 +22,38 @@ public class FoodItems extends javax.swing.JFrame {
     public FoodItems() {
         initComponents();
         price.setDocument(new JTextFieldLimit(4));
-        Fillcombo();
-        
+//      Fillcombo();
+        refreshTable();
+        refreshTable1();
         setTitle("Food Items");
         
         //display data in food_jTable
-        try{
-                   Class.forName("com.mysql.cj.jdbc.Driver");
-                   
-                   Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
-                   
-                   PreparedStatement ps = con.prepareStatement("Select id,name,price,category from food");
-                   ResultSet rs = ps.executeQuery();
-                   
-                  while(rs.next())
-                  {
-                      String id = String.valueOf(rs.getInt("id"));
-                      String name = rs.getString("name");
-                      String price = String.valueOf(rs.getInt("price"));
-                      String category = rs.getString("category");
-                      
-                      
-                      String tbData[] = {id,name,price,category};
-                      DefaultTableModel tblModel = (DefaultTableModel)food_jTable.getModel();
-                      tblModel.addRow(tbData);
-                  }
-                   
-                }
-                catch(Exception e)
-                {
-                    JOptionPane.showMessageDialog(null,"No Data Found","Alert",JOptionPane.WARNING_MESSAGE);
-                }
+//        try{
+//                   Class.forName("com.mysql.cj.jdbc.Driver");
+//                   
+//                   Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
+//                   
+//                   PreparedStatement ps = con.prepareStatement("Select id,name,price,category from food");
+//                   ResultSet rs = ps.executeQuery();
+//                   
+//                  while(rs.next())
+//                  {
+//                      String id = String.valueOf(rs.getInt("id"));
+//                      String name = rs.getString("name");
+//                      String price = String.valueOf(rs.getInt("price"));
+//                      String category = rs.getString("category");
+//                      
+//                      
+//                      String tbData[] = {id,name,price,category};
+//                      DefaultTableModel tblModel = (DefaultTableModel)food_jTable.getModel();
+//                      tblModel.addRow(tbData);
+//                  }
+//                   
+//                }
+//                catch(Exception e)
+//                {
+//                    JOptionPane.showMessageDialog(null,"No Data Found","Alert",JOptionPane.WARNING_MESSAGE);
+//                }
     }
     //limiting the JTextField
   class JTextFieldLimit extends PlainDocument {
@@ -85,9 +85,25 @@ public class FoodItems extends javax.swing.JFrame {
                    
                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
                    
-                   PreparedStatement ps = con.prepareStatement("Select * from food");
+                   PreparedStatement ps = con.prepareStatement
+     ("Select food.id,food.name,food.price,category.name from food,category WHERE category.id=food.category_id");
                    ResultSet rs = ps.executeQuery();
                    food_jTable.setModel(DbUtils.resultSetToTableModel(rs));
+           }
+           catch(Exception e)
+           {
+              
+           }
+      }
+  public void refreshTable1(){
+           try{
+               Class.forName("com.mysql.cj.jdbc.Driver");
+                   
+                   Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
+                   
+                   PreparedStatement ps = con.prepareStatement("Select * from category");
+                   ResultSet rs = ps.executeQuery();
+                   category_jTable.setModel(DbUtils.resultSetToTableModel(rs));
            }
            catch(Exception e)
            {
@@ -97,30 +113,32 @@ public class FoodItems extends javax.swing.JFrame {
  
   //Fill ComboBox category
   
-  private void Fillcombo(){
-      
-      try{
-          Class.forName("com.mysql.cj.jdbc.Driver");
-                   
-          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
-          
-          PreparedStatement ps = con.prepareStatement("Select name from category ");
-          
-          ResultSet rs = ps.executeQuery();
-          
-          while(rs.next())
-          {
-              String name = rs.getString("name");
-              category.addItem(name);
-          }   
-          
-      }
-      catch(Exception e )
-      {
-          JOptionPane.showMessageDialog(null,"Content not available");
-      }
-          
-  }
+//  private void Fillcombo(){
+//      
+//      try{
+//          Class.forName("com.mysql.cj.jdbc.Driver");
+//                   
+//          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
+//          
+//          PreparedStatement ps = con.prepareStatement("Select id,name from category ");
+//          
+//          ResultSet rs = ps.executeQuery();
+//          
+//          while(rs.next())
+//          {
+//            
+//              String name = rs.getString("name");
+//               
+//              category.addItem(name);
+//          }   
+//          
+//      }
+//      catch(Exception e )
+//      {
+//          JOptionPane.showMessageDialog(null,"Content not available");
+//      }
+//          
+//  }
   
   
         
@@ -146,9 +164,12 @@ public class FoodItems extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         food_jTable = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        category = new javax.swing.JComboBox<>();
         delete = new javax.swing.JButton();
         update = new javax.swing.JButton();
+        category = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        category_jTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -194,8 +215,6 @@ public class FoodItems extends javax.swing.JFrame {
 
         jLabel4.setText("Category");
 
-        category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please Select An Category" }));
-
         delete.setText("Delete");
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,71 +229,101 @@ public class FoodItems extends javax.swing.JFrame {
             }
         });
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Category"));
+
+        category_jTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Category Name"
+            }
+        ));
+        jScrollPane2.setViewportView(category_jTable);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(93, 93, 93)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(price)
+                            .addComponent(id)
+                            .addComponent(category))
+                        .addGap(60, 60, 60))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(93, 93, 93)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(name)
-                                    .addComponent(price)
-                                    .addComponent(id)
-                                    .addComponent(category, 0, 195, Short.MAX_VALUE))
-                                .addGap(60, 60, 60))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(insert, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
-                                .addComponent(update)
-                                .addGap(38, 38, 38)
-                                .addComponent(delete)
-                                .addGap(40, 40, 40)))
-                        .addComponent(cancel)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                        .addComponent(insert, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(update)
+                        .addGap(38, 38, 38)
+                        .addComponent(delete)
+                        .addGap(40, 40, 40)))
+                .addComponent(cancel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(175, 175, 175))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addGap(23, 23, 23)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(38, 38, 38))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(insert)
-                    .addComponent(cancel)
-                    .addComponent(delete)
-                    .addComponent(update))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addGap(48, 48, 48))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel4)
+                                .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(insert)
+                            .addComponent(cancel)
+                            .addComponent(delete)
+                            .addComponent(update)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(37, Short.MAX_VALUE))
@@ -285,16 +334,16 @@ public class FoodItems extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 927, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -314,26 +363,29 @@ public class FoodItems extends javax.swing.JFrame {
         
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
         
-        PreparedStatement ps = con.prepareStatement("Insert into food(name,price,category) values(?,?,?) ");
+        PreparedStatement ps = con.prepareStatement("INSERT INTO food(name, price,category_id) VALUES (?,?,?)");
         
-        
-         int price1 = Integer.parseInt(price.getText());
         ps.setString(1,name.getText());
+        int price1 = Integer.parseInt(price.getText());
         ps.setInt(2,price1);
-        String value = category.getSelectedItem().toString();
-        ps.setString(3,value);
+//       Integer value= Integer.parseInt(category.getSelectedItem().toString());
+//        ps.setInt(3,);
+        int cat1 = Integer.parseInt(category.getText());
+        ps.setInt(3,cat1);
         ps.executeUpdate();
-        
+       
         JOptionPane.showMessageDialog(null,"Food Item Registered");
           name.setText("");
           price.setText("");
+         
        }
         
        catch(Exception e)
        {
            JOptionPane.showMessageDialog(null,"Food Item Not Registered","Alert",JOptionPane.WARNING_MESSAGE);
            name.setText("");
-          price.setText("");
+           price.setText("");
+           category.setText("");
        }
         refreshTable();
     }//GEN-LAST:event_insertActionPerformed
@@ -345,7 +397,8 @@ public class FoodItems extends javax.swing.JFrame {
         id.setText(model.getValueAt(i,0).toString());
         name.setText(model.getValueAt(i,1).toString());
         price.setText(model.getValueAt(i,2).toString());
-        category.setSelectedItem(model.getValueAt(i,3).toString());
+//        category.setSelectedItem(model.getValueAt(i,3).toString())
+        category.setText(model.getValueAt(i,3).toString());
     }//GEN-LAST:event_food_jTableMouseClicked
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
@@ -364,6 +417,7 @@ public class FoodItems extends javax.swing.JFrame {
             name.setText("");
             price.setText("");
             id.setText("");
+//           category.setSelectedItem("Please Select A Category");
            
         }
         catch(Exception e)
@@ -380,19 +434,20 @@ public class FoodItems extends javax.swing.JFrame {
             
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
             
-            PreparedStatement ps = con.prepareStatement("UPDATE food set name=?,price=?,category=? where id=? ");
+            PreparedStatement ps = con.prepareStatement("UPDATE food set name=?,price=?,category_id=?where id=? ");
             
             ps.setString(1,name.getText());
             ps.setString(2,price.getText());
-            String value = category.getSelectedItem().toString();
-            ps.setString(3,value);
+//            String value = category.getSelectedItem().toString();
+//            ps.setString(3, value);
             ps.setString(4,id.getText());
+            ps.setString(3,category.getText());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null,"Food Item Is Updated");
             name.setText("");
             price.setText("");
             id.setText("");
-            
+            category.setText("");   
            
         }
         catch(Exception e)
@@ -440,7 +495,8 @@ public class FoodItems extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancel;
-    private javax.swing.JComboBox<String> category;
+    private javax.swing.JTextField category;
+    private javax.swing.JTable category_jTable;
     private javax.swing.JButton delete;
     private javax.swing.JTable food_jTable;
     private javax.swing.JTextField id;
@@ -450,7 +506,9 @@ public class FoodItems extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField name;
     private javax.swing.JTextField price;
     private javax.swing.JButton update;

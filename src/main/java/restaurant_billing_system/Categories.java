@@ -108,7 +108,7 @@ public class Categories extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Name"
+                "ID", "Name", "Food id"
             }
         ));
         category_jTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -140,13 +140,13 @@ public class Categories extends javax.swing.JFrame {
                                 .addGap(46, 46, 46)
                                 .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
+                        .addGap(91, 91, 91)
                         .addComponent(add)
-                        .addGap(51, 51, 51)
+                        .addGap(48, 48, 48)
                         .addComponent(Update)
-                        .addGap(54, 54, 54)
+                        .addGap(51, 51, 51)
                         .addComponent(delete)
-                        .addGap(46, 46, 46)
+                        .addGap(50, 50, 50)
                         .addComponent(cancel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -161,13 +161,13 @@ public class Categories extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                .addGap(68, 68, 68)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add)
                     .addComponent(Update)
                     .addComponent(delete)
                     .addComponent(cancel))
-                .addGap(47, 47, 47)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
         );

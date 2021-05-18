@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2021 at 06:10 AM
+-- Generation Time: May 18, 2021 at 09:27 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -57,8 +57,8 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`) VALUES
-(1, 'Non-Veg'),
-(2, 'Veg');
+(1, 'veg'),
+(2, 'non veg');
 
 -- --------------------------------------------------------
 
@@ -90,19 +90,17 @@ INSERT INTO `customer` (`id`, `name`, `table_no`, `contact`, `date`, `time`) VAL
 
 CREATE TABLE `food` (
   `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `name` varchar(50) NOT NULL,
   `price` int(11) NOT NULL,
-  `category` varchar(25) NOT NULL
+  `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `food`
 --
 
-INSERT INTO `food` (`id`, `name`, `price`, `category`) VALUES
-(28, 'MOMO', 120, 'Non-Veg'),
-(29, 'MOMO', 120, 'Non-Veg'),
-(30, 'Pizza', 170, 'Non-Veg');
+INSERT INTO `food` (`id`, `name`, `price`, `category_id`) VALUES
+(6, '1', 123, 1);
 
 -- --------------------------------------------------------
 
@@ -152,7 +150,8 @@ ALTER TABLE `customer`
 -- Indexes for table `food`
 --
 ALTER TABLE `food`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Indexes for table `waiter`
@@ -168,7 +167,7 @@ ALTER TABLE `waiter`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -180,13 +179,23 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `waiter`
 --
 ALTER TABLE `waiter`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=324;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `food`
+--
+ALTER TABLE `food`
+  ADD CONSTRAINT `food_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -5,6 +5,12 @@
  */
 package restaurant_billing_system;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author Saajan
@@ -16,8 +22,25 @@ public class Take_Order extends javax.swing.JFrame {
      */
     public Take_Order() {
         initComponents();
+        refreshTable();
     }
 
+    
+    public void refreshTable(){
+           try{
+               Class.forName("com.mysql.cj.jdbc.Driver");
+                   
+                   Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
+                   
+                   PreparedStatement ps = con.prepareStatement("Select * from food");
+                   ResultSet rs = ps.executeQuery();
+                   items_jTable.setModel(DbUtils.resultSetToTableModel(rs));
+           }
+           catch(Exception e)
+           {
+              
+           }
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +55,7 @@ public class Take_Order extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        items_jTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,15 +67,20 @@ public class Take_Order extends javax.swing.JFrame {
 
         jButton1.setText("Pay");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        items_jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Food Item", "Price", "Category"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        items_jTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                items_jTableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(items_jTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,6 +130,11 @@ public class Take_Order extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void items_jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_items_jTableMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_items_jTableMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -138,11 +171,11 @@ public class Take_Order extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable items_jTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
