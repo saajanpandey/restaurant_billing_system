@@ -20,30 +20,7 @@ public class Food_Details extends javax.swing.JFrame {
      */
     public Food_Details() {
         initComponents();
-         try{
-                   Class.forName("com.mysql.cj.jdbc.Driver");
-                   
-                   Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
-                   
-                   PreparedStatement ps = con.prepareStatement("Select id,name,price from food");
-                   ResultSet rs = ps.executeQuery();
-                   
-                  while(rs.next())
-                  {
-                      String id = String.valueOf(rs.getInt("id"));
-                      String name = rs.getString("name");
-                      String price = String.valueOf(rs.getInt("price"));
-                      
-                      String tbData[] = {id,name,price};
-                      DefaultTableModel tblModel = (DefaultTableModel)food_jTable.getModel();
-                      tblModel.addRow(tbData);
-                  }
-                   
-                }
-                catch(Exception e)
-                {
-                    JOptionPane.showMessageDialog(null,"No Data Found","Alert",JOptionPane.WARNING_MESSAGE);
-                }
+        refreshTable();
     }
 
     /**
@@ -200,7 +177,7 @@ public class Food_Details extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     public void refreshTable(){
+     private void refreshTable(){
            try{
                Class.forName("com.mysql.cj.jdbc.Driver");
                    

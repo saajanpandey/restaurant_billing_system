@@ -71,6 +71,11 @@ public class Waiter_DashBoard extends javax.swing.JFrame {
         });
 
         take_order.setText("Take Order and Bill");
+        take_order.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                take_orderActionPerformed(evt);
+            }
+        });
 
         book.setText("Book a table");
         book.addActionListener(new java.awt.event.ActionListener() {
@@ -153,6 +158,12 @@ public class Waiter_DashBoard extends javax.swing.JFrame {
         Book_Table bt = new Book_Table();
         bt.setVisible(true);
     }//GEN-LAST:event_bookActionPerformed
+
+    private void take_orderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_take_orderActionPerformed
+        // TODO add your handling code here:
+        Take_Order to = new Take_Order();
+        to.setVisible(true);
+    }//GEN-LAST:event_take_orderActionPerformed
 
     /**
      * @param args the command line arguments

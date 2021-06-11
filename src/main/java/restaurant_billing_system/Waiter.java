@@ -7,6 +7,7 @@ package restaurant_billing_system;
 
 import javax.swing.*;
 import java.sql.*;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -51,8 +52,8 @@ public class Waiter extends javax.swing.JFrame {
   }
 }
     //refresh Table
-    public void refreshTable(){
-           try{
+    private void refreshTable(){
+          try{
                Class.forName("com.mysql.cj.jdbc.Driver");
                    
                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
@@ -60,11 +61,15 @@ public class Waiter extends javax.swing.JFrame {
                    PreparedStatement ps = con.prepareStatement("Select id,name,contact from waiter");
                    ResultSet rs = ps.executeQuery();
                    waiter_jTable.setModel(DbUtils.resultSetToTableModel(rs));
+                   waiter_jTable.getColumnModel().getColumn(0).setHeaderValue("ID");
+                   waiter_jTable.getColumnModel().getColumn(1).setHeaderValue("Waiter Name");
+                   waiter_jTable.getColumnModel().getColumn(2).setHeaderValue("Contact");
            }
            catch(Exception e)
            {
               
            }
+               
         }
 
     /**
@@ -296,6 +301,7 @@ public class Waiter extends javax.swing.JFrame {
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         // TODO add your handling code here:
+            
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             
@@ -307,7 +313,7 @@ public class Waiter extends javax.swing.JFrame {
             ps.setString(2,contact.getText());
             ps.setString(3,id.getText());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Waiter Account Is Updated");
+            JOptionPane.showMessageDialog(null,"Waiter Account Updated");
             name.setText("");
             contact.setText("");
             id.setText("");
@@ -332,7 +338,7 @@ public class Waiter extends javax.swing.JFrame {
             
             ps.setString(1,id.getText());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Waiter Account Is Deleted");
+            JOptionPane.showMessageDialog(null,"Waiter Account  Deleted");
             name.setText("");
             contact.setText("");
             id.setText("");
@@ -352,6 +358,8 @@ public class Waiter extends javax.swing.JFrame {
         id.setText(model.getValueAt(i,0).toString());
         name.setText(model.getValueAt(i,1).toString());
         contact.setText(model.getValueAt(i,2).toString());
+        username.setEditable(false);
+        password.setEditable(false);
     }//GEN-LAST:event_waiter_jTableMouseClicked
 
     /**

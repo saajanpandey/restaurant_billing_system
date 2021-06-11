@@ -40,9 +40,9 @@ public class Waiter_Details extends javax.swing.JFrame {
                   {
                       String id = String.valueOf(rs.getInt("id"));
                       String name = rs.getString("name");
-                      String contact = rs.getString("contact");
+                      String waiter_contact = rs.getString("contact");
                       
-                      String tbData[] = {id,name,contact};
+                      String tbData[] = {id,name,waiter_contact};
                       DefaultTableModel tblModel = (DefaultTableModel)waiter_jTable.getModel();
                       tblModel.addRow(tbData);
                   }

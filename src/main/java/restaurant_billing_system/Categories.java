@@ -28,7 +28,7 @@ public class Categories extends javax.swing.JFrame {
     }
     
      //refresh Table
-    public void refreshTable(){
+    private void refreshTable(){
            try{
                Class.forName("com.mysql.cj.jdbc.Driver");
                    
@@ -37,6 +37,8 @@ public class Categories extends javax.swing.JFrame {
                    PreparedStatement ps = con.prepareStatement("Select * from category");
                    ResultSet rs = ps.executeQuery();
                    category_jTable.setModel(DbUtils.resultSetToTableModel(rs));
+                   category_jTable.getColumnModel().getColumn(0).setHeaderValue("ID");
+                   category_jTable.getColumnModel().getColumn(1).setHeaderValue("Category Name");
            }
            catch(Exception e)
            {
