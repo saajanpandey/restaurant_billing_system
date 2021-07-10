@@ -35,109 +35,176 @@ public class Admin_DashBoard extends javax.swing.JFrame {
         change_password = new javax.swing.JButton();
         add_waiter = new javax.swing.JButton();
         categories = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
-        add_product.setText("Food Items");
+        add_product.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/items.png"))); // NOI18N
+        add_product.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                add_productComponentShown(evt);
+            }
+        });
         add_product.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 add_productActionPerformed(evt);
             }
         });
 
-        logout.setText("Logout");
+        logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/logout.png"))); // NOI18N
+        logout.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                logoutComponentShown(evt);
+            }
+        });
         logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutActionPerformed(evt);
             }
         });
 
-        sales_report.setText("Sales Report");
+        sales_report.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/sales.png"))); // NOI18N
+        sales_report.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                sales_reportComponentShown(evt);
+            }
+        });
         sales_report.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sales_reportActionPerformed(evt);
             }
         });
 
-        change_password.setText("Change Password");
+        change_password.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/update product.png"))); // NOI18N
+        change_password.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                change_passwordComponentShown(evt);
+            }
+        });
         change_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 change_passwordActionPerformed(evt);
             }
         });
 
-        add_waiter.setText("Waiter");
+        add_waiter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/waiter.png"))); // NOI18N
+        add_waiter.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                add_waiterComponentShown(evt);
+            }
+        });
         add_waiter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 add_waiterActionPerformed(evt);
             }
         });
 
-        categories.setText("Food Categories");
+        categories.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/category.png"))); // NOI18N
+        categories.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                categoriesComponentShown(evt);
+            }
+        });
         categories.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 categoriesActionPerformed(evt);
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Logout");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Change Password");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Waiter");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setText("Sales Report");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText("Food Categories");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setText("Food Items");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(add_product)
-                .addGap(22, 22, 22)
-                .addComponent(categories)
-                .addGap(18, 18, 18)
-                .addComponent(sales_report)
-                .addGap(36, 36, 36)
-                .addComponent(add_waiter)
-                .addGap(36, 36, 36)
-                .addComponent(change_password)
-                .addGap(36, 36, 36)
-                .addComponent(logout)
-                .addContainerGap(44, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(add_product)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel6)))
+                .addGap(48, 48, 48)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(categories)
+                    .addComponent(jLabel5))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sales_report)
+                    .addComponent(jLabel4))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(add_waiter)
+                        .addGap(50, 50, 50)
+                        .addComponent(change_password, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel2)
+                        .addGap(9, 9, 9)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 367, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(sales_report, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(categories, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(add_product, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(add_waiter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(change_password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(add_product)
-                    .addComponent(logout)
-                    .addComponent(sales_report)
-                    .addComponent(change_password)
-                    .addComponent(add_waiter)
-                    .addComponent(categories))
-                .addContainerGap(58, Short.MAX_VALUE))
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 372, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        Login_Form log = new Login_Form();
-        log.setVisible(true);
-    }//GEN-LAST:event_logoutActionPerformed
 
     private void sales_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sales_reportActionPerformed
         // TODO add your handling code here:
@@ -167,6 +234,37 @@ public class Admin_DashBoard extends javax.swing.JFrame {
         Categories cg = new Categories();
         cg.setVisible(true);
     }//GEN-LAST:event_categoriesActionPerformed
+
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        Login_Form log = new Login_Form();
+        log.setVisible(true);
+    }//GEN-LAST:event_logoutActionPerformed
+
+    private void add_productComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_add_productComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_productComponentShown
+
+    private void categoriesComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_categoriesComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_categoriesComponentShown
+
+    private void sales_reportComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_sales_reportComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sales_reportComponentShown
+
+    private void change_passwordComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_change_passwordComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_change_passwordComponentShown
+
+    private void add_waiterComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_add_waiterComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_waiterComponentShown
+
+    private void logoutComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_logoutComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logoutComponentShown
 
     /**
      * @param args the command line arguments
@@ -208,6 +306,12 @@ public class Admin_DashBoard extends javax.swing.JFrame {
     private javax.swing.JButton add_waiter;
     private javax.swing.JButton categories;
     private javax.swing.JButton change_password;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton logout;
     private javax.swing.JButton sales_report;
