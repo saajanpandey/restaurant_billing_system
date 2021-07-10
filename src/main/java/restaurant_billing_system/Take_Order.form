@@ -80,12 +80,21 @@
                                   </Group>
                                   <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                                       <Component id="c_contact" min="-2" pref="180" max="-2" attributes="0"/>
                                       <Component id="quantity" min="-2" pref="180" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="price" min="-2" pref="180" max="-2" attributes="0"/>
+=======
+                                      <Component id="price" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="c_contact" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="quantity" min="-2" pref="180" max="-2" attributes="0"/>
+>>>>>>> 0aa0ee51d9a2c3e8fe9dc2d5eb634145eeb891cc
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -104,11 +113,17 @@
                               <Group type="102" attributes="0">
                                   <Component id="jScrollPane3" min="-2" pref="306" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
+<<<<<<< HEAD
                                   <Component id="jScrollPane2" min="-2" pref="223" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="print_bill" min="-2" max="-2" attributes="0"/>
                                       <Component id="clearBillDisplay" min="-2" max="-2" attributes="0"/>
+=======
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jScrollPane2" min="-2" pref="223" max="-2" attributes="0"/>
+                                      <Component id="print_bill" min="-2" max="-2" attributes="0"/>
+>>>>>>> 0aa0ee51d9a2c3e8fe9dc2d5eb634145eeb891cc
                                   </Group>
                               </Group>
                               <Component id="jScrollPane1" min="-2" pref="717" max="-2" attributes="0"/>
@@ -136,14 +151,24 @@
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="food_item" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
                               <Component id="quantity" alignment="3" min="-2" max="-2" attributes="0"/>
+=======
+                              <Component id="price" alignment="3" min="-2" max="-2" attributes="0"/>
+>>>>>>> 0aa0ee51d9a2c3e8fe9dc2d5eb634145eeb891cc
                           </Group>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
                               <Component id="grand_total" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="price" alignment="3" min="-2" max="-2" attributes="0"/>
+=======
+                              <Component id="quantity" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="grand_total" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+>>>>>>> 0aa0ee51d9a2c3e8fe9dc2d5eb634145eeb891cc
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -158,11 +183,18 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane3" min="-2" pref="215" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
+<<<<<<< HEAD
                           <Component id="print_bill" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="clearBillDisplay" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane2" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
+=======
+                          <Component id="jScrollPane2" min="-2" pref="17" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="print_bill" min="-2" max="-2" attributes="0"/>
+                      </Group>
+>>>>>>> 0aa0ee51d9a2c3e8fe9dc2d5eb634145eeb891cc
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -283,6 +315,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
+<<<<<<< HEAD
+=======
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/restaurant_billing_system/add.png"/>
+            </Property>
+>>>>>>> 0aa0ee51d9a2c3e8fe9dc2d5eb634145eeb891cc
             <Property name="text" type="java.lang.String" value="Add Items"/>
           </Properties>
           <Events>
@@ -298,6 +336,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="food_item">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="food_itemActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -313,6 +354,12 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
+<<<<<<< HEAD
+=======
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/restaurant_billing_system/printer.png"/>
+>>>>>>> 0aa0ee51d9a2c3e8fe9dc2d5eb634145eeb891cc
             </Property>
             <Property name="text" type="java.lang.String" value="Print"/>
           </Properties>
@@ -332,12 +379,21 @@
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="grand_totalActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="save">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
+<<<<<<< HEAD
+=======
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/restaurant_billing_system/save.png"/>
+            </Property>
+>>>>>>> 0aa0ee51d9a2c3e8fe9dc2d5eb634145eeb891cc
             <Property name="text" type="java.lang.String" value="Save"/>
           </Properties>
         </Component>

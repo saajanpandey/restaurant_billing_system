@@ -39,6 +39,10 @@ public class Login_Form extends javax.swing.JFrame {
         radio_admin = new javax.swing.JRadioButton();
         radio_waiter = new javax.swing.JRadioButton();
         password = new javax.swing.JPasswordField();
+<<<<<<< HEAD
+=======
+        jCheckBox1 = new javax.swing.JCheckBox();
+>>>>>>> 0aa0ee51d9a2c3e8fe9dc2d5eb634145eeb891cc
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -56,6 +60,7 @@ public class Login_Form extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, -1, -1));
         getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 177, -1));
 
+        login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/login.png"))); // NOI18N
         login.setText("Login");
         login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,6 +69,7 @@ public class Login_Form extends javax.swing.JFrame {
         });
         getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, -1, -1));
 
+        exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/close Jframe.png"))); // NOI18N
         exit.setText("Exit");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,8 +95,19 @@ public class Login_Form extends javax.swing.JFrame {
             }
         });
         getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 177, -1));
+<<<<<<< HEAD
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
 
+=======
+
+        jCheckBox1.setText("Show Password");
+        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/login ani.gif"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/login background 2.PNG"))); // NOI18N
+>>>>>>> 0aa0ee51d9a2c3e8fe9dc2d5eb634145eeb891cc
         jLabel4.setText("jLabel4");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 730, 410));
 
@@ -207,6 +224,7 @@ public class Login_Form extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exit;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
