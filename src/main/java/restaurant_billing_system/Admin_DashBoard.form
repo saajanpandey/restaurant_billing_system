@@ -19,7 +19,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-28,0,0,3,113"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-28,0,0,3,104"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -34,7 +34,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
+          <AbsoluteConstraints x="0" y="0" width="-1" height="470"/>
         </Constraint>
       </Constraints>
 
@@ -111,7 +111,7 @@
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <EmptySpace pref="363" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -120,66 +120,60 @@
         <Component class="javax.swing.JButton" name="add_product">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/restaurant_billing_system/items.png"/>
+              <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\items.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="add_productComponentShown"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="add_productActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="logout">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/restaurant_billing_system/logout.png"/>
+              <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\logout.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="logoutComponentShown"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="sales_report">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/restaurant_billing_system/sales.png"/>
+              <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\sales.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="sales_reportComponentShown"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sales_reportActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="change_password">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/restaurant_billing_system/update product.png"/>
+              <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\update product.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="change_passwordComponentShown"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="change_passwordActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="add_waiter">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/restaurant_billing_system/waiter.png"/>
+              <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\waiter.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="add_waiterComponentShown"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="add_waiterActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="categories">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/restaurant_billing_system/category.png"/>
+              <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\category.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="categoriesComponentShown"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="categoriesActionPerformed"/>
           </Events>
         </Component>

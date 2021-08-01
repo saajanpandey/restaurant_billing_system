@@ -81,7 +81,7 @@
                           <Component id="change_password" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                           <Component id="logout" min="-2" pref="104" max="-2" attributes="0"/>
-                          <EmptySpace pref="20" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
@@ -111,14 +111,14 @@
                               <Component id="change_password" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="19" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -127,7 +127,7 @@
         <Component class="javax.swing.JButton" name="take_order">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/restaurant_billing_system/take order and bill.png"/>
+              <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\take order and bill.png"/>
             </Property>
           </Properties>
           <Events>
@@ -137,7 +137,7 @@
         <Component class="javax.swing.JButton" name="book">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/restaurant_billing_system/booking.png"/>
+              <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\booking.png"/>
             </Property>
           </Properties>
           <Events>
@@ -147,7 +147,7 @@
         <Component class="javax.swing.JButton" name="change_password">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/restaurant_billing_system/update product.png"/>
+              <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\update product.png"/>
             </Property>
           </Properties>
           <Events>
@@ -166,7 +166,7 @@
         <Component class="javax.swing.JButton" name="logout">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/restaurant_billing_system/logout.png"/>
+              <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\logout.png"/>
             </Property>
           </Properties>
           <Events>

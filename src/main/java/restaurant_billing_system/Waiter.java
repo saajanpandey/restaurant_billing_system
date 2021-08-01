@@ -113,7 +113,7 @@ public class Waiter extends javax.swing.JFrame {
         jLabel3.setText("Contact");
 
         add_waiter.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        add_waiter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/add.png"))); // NOI18N
+        add_waiter.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\add.png")); // NOI18N
         add_waiter.setText("Add Waiter");
         add_waiter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,7 +122,7 @@ public class Waiter extends javax.swing.JFrame {
         });
 
         cancel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/close.png"))); // NOI18N
+        cancel.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\close.png")); // NOI18N
         cancel.setText("Cancel");
         cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,7 +139,7 @@ public class Waiter extends javax.swing.JFrame {
         id.setEditable(false);
 
         update.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/change.png"))); // NOI18N
+        update.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\change.png")); // NOI18N
         update.setText("Update");
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,7 +148,7 @@ public class Waiter extends javax.swing.JFrame {
         });
 
         delete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/delete.png"))); // NOI18N
+        delete.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\delete.png")); // NOI18N
         delete.setText("Delete");
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,6 +188,7 @@ public class Waiter extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
@@ -196,9 +197,13 @@ public class Waiter extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(contact, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(130, 130, 130)
                         .addComponent(add_waiter)
@@ -210,15 +215,11 @@ public class Waiter extends javax.swing.JFrame {
                                 .addComponent(delete)
                                 .addGap(18, 18, 18)
                                 .addComponent(cancel))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(34, 34, 34)
-                                    .addComponent(contact, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(

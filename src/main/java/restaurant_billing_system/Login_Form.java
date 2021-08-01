@@ -9,9 +9,9 @@ package restaurant_billing_system;
  *
  * @author Saajan
  */
-
 import javax.swing.*;
 import java.sql.*;
+
 public class Login_Form extends javax.swing.JFrame {
 
     /**
@@ -36,13 +36,9 @@ public class Login_Form extends javax.swing.JFrame {
         username = new javax.swing.JTextField();
         login = new javax.swing.JButton();
         exit = new javax.swing.JButton();
-        radio_admin = new javax.swing.JRadioButton();
+        admin_radio = new javax.swing.JRadioButton();
         radio_waiter = new javax.swing.JRadioButton();
         password = new javax.swing.JPasswordField();
-<<<<<<< HEAD
-=======
-        jCheckBox1 = new javax.swing.JCheckBox();
->>>>>>> 0aa0ee51d9a2c3e8fe9dc2d5eb634145eeb891cc
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -60,7 +56,7 @@ public class Login_Form extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, -1, -1));
         getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 177, -1));
 
-        login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/login.png"))); // NOI18N
+        login.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\login.png")); // NOI18N
         login.setText("Login");
         login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,7 +65,7 @@ public class Login_Form extends javax.swing.JFrame {
         });
         getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, -1, -1));
 
-        exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/close Jframe.png"))); // NOI18N
+        exit.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\close Jframe.png")); // NOI18N
         exit.setText("Exit");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,114 +74,74 @@ public class Login_Form extends javax.swing.JFrame {
         });
         getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, -1, -1));
 
-        radio_admin.setText("Admin");
-        getContentPane().add(radio_admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, -1, -1));
+        admin_radio.setText("Admin");
+        getContentPane().add(admin_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, -1, -1));
 
         radio_waiter.setText("Waiter");
-        radio_waiter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radio_waiterActionPerformed(evt);
-            }
-        });
-        getContentPane().add(radio_waiter, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, -1, -1));
-
-        password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
-            }
-        });
+        getContentPane().add(radio_waiter, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, -1, -1));
         getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 177, -1));
-<<<<<<< HEAD
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\login ani.gif")); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
 
-=======
-
-        jCheckBox1.setText("Show Password");
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, -1, -1));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/login ani.gif"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/login background 2.PNG"))); // NOI18N
->>>>>>> 0aa0ee51d9a2c3e8fe9dc2d5eb634145eeb891cc
+        jLabel4.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\login background 2.PNG")); // NOI18N
         jLabel4.setText("jLabel4");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 730, 410));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
-        int a=JOptionPane.showConfirmDialog(null,"Do you want to close Applcation?","Select",JOptionPane.YES_NO_CANCEL_OPTION);
-        if(a==0)
-        {
+        int a = JOptionPane.showConfirmDialog(null, "Do you want to close Applcation?", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (a == 0) {
             System.exit(0);
-        } 
+        }
     }//GEN-LAST:event_exitActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-         try{
-           Class.forName("com.mysql.cj.jdbc.Driver");
-           
-           Connection con = DriverManager.getConnection
-                   ("jdbc:mysql://localhost:3306/rbs","root","");
-           if(radio_waiter.isSelected())
-           {
-                
-               PreparedStatement ps= con.prepareStatement
-             ("Select * from waiter where username=? AND password=? ");
-             String username1 = username.getText();
-            ps.setString(1,username.getText());
-            ps.setString(2,password.getText());
-            ResultSet rs = ps.executeQuery();
-            if(rs.next())
-            {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs", "root", "");
+            if (radio_waiter.isSelected()) {
+
+                PreparedStatement ps = con.prepareStatement("Select * from waiter where username=? AND password=? ");
+                String username1 = username.getText();
+                ps.setString(1, username.getText());
+                ps.setString(2, password.getText());
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
                     this.dispose();
-                   Waiter_DashBoard sp = new Waiter_DashBoard(username1);
-                   sp.setVisible(true);
-            }
-            else{
-                JOptionPane.showMessageDialog(null,"wrong username or password");
-           }
-                
-           }
-           else if(radio_admin.isSelected())
-           {
-                 PreparedStatement ps= con.prepareStatement
-             ("Select * from admin where username=? AND password=? ");
-           
-            ps.setString(1,username.getText());
-            ps.setString(2,password.getText());
-            ResultSet rs = ps.executeQuery();
-            if(rs.next())
-            {
+                    Waiter_DashBoard sp = new Waiter_DashBoard(username1);
+                    sp.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "wrong username or password");
+                }
+
+            } 
+            else if (admin_radio.isSelected()) {
+                PreparedStatement ps = con.prepareStatement("SELECT * from admin WHERE  username=? AND password=? ");
+                ps.setString(1, username.getText());
+                ps.setString(2, password.getText());
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
                     this.dispose();
                     Admin_DashBoard ad = new Admin_DashBoard();
                     ad.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "wrong username or password");
+                    username.setText("");
+                    password.setText("");
+                }
+
             }
-            else{
-                JOptionPane.showMessageDialog(null,"wrong username or password");
-                username.setText("");
-                password.setText("");
-           }
-               
-           }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Incorrect username or password", "Alert", JOptionPane.WARNING_MESSAGE);
         }
-        catch(Exception e)
-        {
-           JOptionPane.showMessageDialog(null,"Incorrect username or password","Alert",JOptionPane.WARNING_MESSAGE);
-        }
-       
+
     }//GEN-LAST:event_loginActionPerformed
-
-    private void radio_waiterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_waiterActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radio_waiterActionPerformed
-
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,15 +179,14 @@ public class Login_Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton admin_radio;
     private javax.swing.JButton exit;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton login;
     private javax.swing.JPasswordField password;
-    private javax.swing.JRadioButton radio_admin;
     private javax.swing.JRadioButton radio_waiter;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables

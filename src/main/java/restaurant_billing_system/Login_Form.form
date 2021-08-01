@@ -63,7 +63,7 @@
     <Component class="javax.swing.JButton" name="login">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/restaurant_billing_system/login.png"/>
+          <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\login.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Login"/>
       </Properties>
@@ -79,7 +79,7 @@
     <Component class="javax.swing.JButton" name="exit">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/restaurant_billing_system/close Jframe.png"/>
+          <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\close Jframe.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Exit"/>
       </Properties>
@@ -92,13 +92,13 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="radio_admin">
+    <Component class="javax.swing.JRadioButton" name="admin_radio">
       <Properties>
         <Property name="text" type="java.lang.String" value="Admin"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="500" y="270" width="-1" height="-1"/>
+          <AbsoluteConstraints x="500" y="260" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -106,45 +106,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Waiter"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radio_waiterActionPerformed"/>
-      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="560" y="270" width="-1" height="-1"/>
+          <AbsoluteConstraints x="590" y="260" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JPasswordField" name="password">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passwordActionPerformed"/>
-      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="500" y="200" width="177" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
-<<<<<<< HEAD
-    <Component class="javax.swing.JLabel" name="jLabel3">
-=======
-    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Show Password"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="500" y="230" width="-1" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/restaurant_billing_system/login ani.gif"/>
+          <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\login ani.gif"/>
         </Property>
       </Properties>
->>>>>>> 0aa0ee51d9a2c3e8fe9dc2d5eb634145eeb891cc
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="400" y="20" width="-1" height="-1"/>
@@ -153,17 +133,14 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-<<<<<<< HEAD
-=======
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/restaurant_billing_system/login background 2.PNG"/>
+          <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\login background 2.PNG"/>
         </Property>
->>>>>>> 0aa0ee51d9a2c3e8fe9dc2d5eb634145eeb891cc
         <Property name="text" type="java.lang.String" value="jLabel4"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="-3" y="-4" width="730" height="410"/>
+          <AbsoluteConstraints x="0" y="0" width="720" height="410"/>
         </Constraint>
       </Constraints>
     </Component>

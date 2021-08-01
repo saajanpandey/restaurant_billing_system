@@ -60,6 +60,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane1" alignment="0" min="-2" pref="661" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -69,11 +70,16 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="id" min="-2" pref="191" max="-2" attributes="0"/>
                                       <Component id="username" min="-2" pref="191" max="-2" attributes="0"/>
-                                      <Component id="name" min="-2" pref="191" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="name" min="-2" pref="191" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="contact" min="-2" pref="191" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" alignment="0" min="-2" pref="661" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -88,17 +94,11 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="cancel" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="password" min="-2" pref="191" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Component id="contact" min="-2" pref="191" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="password" min="-2" pref="191" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -174,7 +174,7 @@
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/restaurant_billing_system/add.png"/>
+              <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\add.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Add Waiter"/>
           </Properties>
@@ -188,7 +188,7 @@
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/restaurant_billing_system/close.png"/>
+              <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\close.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cancel"/>
           </Properties>
@@ -231,7 +231,7 @@
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/restaurant_billing_system/change.png"/>
+              <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\change.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Update"/>
           </Properties>
@@ -245,7 +245,7 @@
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/restaurant_billing_system/delete.png"/>
+              <Image iconType="2" name="E:\6th sem project\design\src\main\java\images\delete.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Delete"/>
           </Properties>

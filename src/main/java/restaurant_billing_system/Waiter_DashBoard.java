@@ -19,6 +19,7 @@ public class Waiter_DashBoard extends javax.swing.JFrame {
      */
     public Waiter_DashBoard() {
         initComponents();
+        setTitle("Waiter DashBoard");
     }
     public Waiter_DashBoard(String msg){
         initComponents();
@@ -58,21 +59,21 @@ public class Waiter_DashBoard extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
-        take_order.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/take order and bill.png"))); // NOI18N
+        take_order.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\take order and bill.png")); // NOI18N
         take_order.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 take_orderActionPerformed(evt);
             }
         });
 
-        book.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/booking.png"))); // NOI18N
+        book.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\booking.png")); // NOI18N
         book.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bookActionPerformed(evt);
             }
         });
 
-        change_password.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/update product.png"))); // NOI18N
+        change_password.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\update product.png")); // NOI18N
         change_password.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 change_passwordComponentShown(evt);
@@ -87,7 +88,7 @@ public class Waiter_DashBoard extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Change Password");
 
-        logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/logout.png"))); // NOI18N
+        logout.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\logout.png")); // NOI18N
         logout.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 logoutComponentShown(evt);
@@ -130,7 +131,7 @@ public class Waiter_DashBoard extends javax.swing.JFrame {
                         .addComponent(change_password)
                         .addGap(43, 43, 43)
                         .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(20, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jLabel2)
@@ -153,11 +154,11 @@ public class Waiter_DashBoard extends javax.swing.JFrame {
                             .addComponent(book)
                             .addComponent(change_password))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel2))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N

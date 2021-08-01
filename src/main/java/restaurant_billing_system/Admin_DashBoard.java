@@ -48,72 +48,42 @@ public class Admin_DashBoard extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
-        add_product.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/items.png"))); // NOI18N
-        add_product.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                add_productComponentShown(evt);
-            }
-        });
+        add_product.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\items.png")); // NOI18N
         add_product.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 add_productActionPerformed(evt);
             }
         });
 
-        logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/logout.png"))); // NOI18N
-        logout.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                logoutComponentShown(evt);
-            }
-        });
+        logout.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\logout.png")); // NOI18N
         logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutActionPerformed(evt);
             }
         });
 
-        sales_report.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/sales.png"))); // NOI18N
-        sales_report.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                sales_reportComponentShown(evt);
-            }
-        });
+        sales_report.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\sales.png")); // NOI18N
         sales_report.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sales_reportActionPerformed(evt);
             }
         });
 
-        change_password.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/update product.png"))); // NOI18N
-        change_password.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                change_passwordComponentShown(evt);
-            }
-        });
+        change_password.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\update product.png")); // NOI18N
         change_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 change_passwordActionPerformed(evt);
             }
         });
 
-        add_waiter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/waiter.png"))); // NOI18N
-        add_waiter.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                add_waiterComponentShown(evt);
-            }
-        });
+        add_waiter.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\waiter.png")); // NOI18N
         add_waiter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 add_waiterActionPerformed(evt);
             }
         });
 
-        categories.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_billing_system/category.png"))); // NOI18N
-        categories.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                categoriesComponentShown(evt);
-            }
-        });
+        categories.setIcon(new javax.swing.ImageIcon("E:\\6th sem project\\design\\src\\main\\java\\images\\category.png")); // NOI18N
         categories.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 categoriesActionPerformed(evt);
@@ -198,10 +168,10 @@ public class Admin_DashBoard extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(363, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -241,30 +211,6 @@ public class Admin_DashBoard extends javax.swing.JFrame {
         Login_Form log = new Login_Form();
         log.setVisible(true);
     }//GEN-LAST:event_logoutActionPerformed
-
-    private void add_productComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_add_productComponentShown
-        // TODO add your handling code here:
-    }//GEN-LAST:event_add_productComponentShown
-
-    private void categoriesComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_categoriesComponentShown
-        // TODO add your handling code here:
-    }//GEN-LAST:event_categoriesComponentShown
-
-    private void sales_reportComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_sales_reportComponentShown
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sales_reportComponentShown
-
-    private void change_passwordComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_change_passwordComponentShown
-        // TODO add your handling code here:
-    }//GEN-LAST:event_change_passwordComponentShown
-
-    private void add_waiterComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_add_waiterComponentShown
-        // TODO add your handling code here:
-    }//GEN-LAST:event_add_waiterComponentShown
-
-    private void logoutComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_logoutComponentShown
-        // TODO add your handling code here:
-    }//GEN-LAST:event_logoutComponentShown
 
     /**
      * @param args the command line arguments
