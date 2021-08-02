@@ -18,7 +18,7 @@ public class Change_Password_Waiter extends javax.swing.JFrame {
      */
     public Change_Password_Waiter() {
         initComponents();
-        setTitle("Change Password");
+        setTitle("Change Password Waiter");
     }
 
     /**
@@ -184,8 +184,8 @@ public class Change_Password_Waiter extends javax.swing.JFrame {
     private void back2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back2ActionPerformed
         // TODO add your handling code here:]
         this.dispose();
-        Admin_DashBoard ad= new Admin_DashBoard();
-        ad.setVisible(true);
+        Waiter_DashBoard wd= new Waiter_DashBoard();
+        wd.setVisible(true);
     }//GEN-LAST:event_back2ActionPerformed
 
     private void changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeActionPerformed
@@ -197,7 +197,7 @@ public class Change_Password_Waiter extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection
             ("jdbc:mysql://localhost:3306/rbs","root","");
 
-            PreparedStatement ps = con.prepareStatement("UPDATE admin set password=? where username=? AND password=?");
+            PreparedStatement ps = con.prepareStatement("UPDATE waiter set password=? where username=? AND password=?");
 
             ps.setString(1,new_password.getText());
             ps.setString(2,username.getText());
