@@ -23,7 +23,8 @@ public class Sales extends javax.swing.JFrame {
     public Sales() {
         initComponents();
         setTitle("Sales Report");
-        refreshTable();                                                                                                         
+        refreshTable();       
+        getSum();
     }
     private void refreshTable(){
           try{
@@ -46,6 +47,18 @@ public class Sales extends javax.swing.JFrame {
            }
                
         }
+    
+    public void getSum()
+    {
+        int sum=0;
+        for(int i=0;i<sales_jTable.getRowCount();i++)
+        {
+             sum = sum +Integer.parseInt(sales_jTable.getValueAt(i,4).toString());
+        }
+        String total = String.valueOf(sum);
+        total_sales.setText(total);
+    }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,11 +73,13 @@ public class Sales extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         sales_jTable = new javax.swing.JTable();
         close = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        total_sales = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Sales Report", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Total Sales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
         sales_jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,6 +103,12 @@ public class Sales extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Total Sales Amount");
+
+        total_sales.setEditable(false);
+        total_sales.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -98,6 +119,10 @@ public class Sales extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(31, 31, 31)
+                .addComponent(total_sales, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(close)
                 .addGap(44, 44, 44))
         );
@@ -107,7 +132,10 @@ public class Sales extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(close)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(close)
+                    .addComponent(jLabel1)
+                    .addComponent(total_sales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
 
@@ -173,8 +201,10 @@ public class Sales extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton close;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable sales_jTable;
+    private javax.swing.JTextField total_sales;
     // End of variables declaration//GEN-END:variables
 }
