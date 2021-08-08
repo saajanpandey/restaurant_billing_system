@@ -32,12 +32,15 @@ public class Take_Order extends javax.swing.JFrame {
         initComponents();
         setTitle("Take Order");
         billHeader();
+        name_valid.setVisible(false);
+        price_valid.setVisible(false);
+        food_valid.setVisible(false);
         refreshTable1();
           Object [] colomns={"Food Items","Quantity","Price","Total"};
   DefaultTableModel model= new DefaultTableModel();
   model.setColumnIdentifiers(colomns);
   bill_jTable.setModel(model);
-  
+  quantity.setDocument(new JTextFieldLimit(2));
     }
     
     private void billHeader()
@@ -80,7 +83,28 @@ bill.setText("========================"+"\n"
               
            }
       }
-    
+    class JTextFieldLimit extends PlainDocument {
+  private int limit;
+  JTextFieldLimit(int limit) {
+    super();
+    this.limit = limit;
+  }
+
+  JTextFieldLimit(int limit, boolean upper) {
+    super();
+    this.limit = limit;
+  }
+
+  @Override 
+  public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+    if (str == null)
+      return;
+
+    if ((getLength() + str.length()) <= limit) {
+      super.insertString(offset, str.replaceAll("\\D++", ""), attr);
+    }
+  }
+}
     
 
 
@@ -118,6 +142,9 @@ bill.setText("========================"+"\n"
         jLabel7 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         cancel = new javax.swing.JButton();
+        name_valid = new javax.swing.JLabel();
+        food_valid = new javax.swing.JLabel();
+        price_valid = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -243,6 +270,15 @@ bill.setText("========================"+"\n"
             }
         });
 
+        name_valid.setForeground(new java.awt.Color(255, 0, 0));
+        name_valid.setText("Please Enter Customer Name");
+
+        food_valid.setForeground(new java.awt.Color(255, 0, 0));
+        food_valid.setText("Please Select Food Item");
+
+        price_valid.setForeground(new java.awt.Color(255, 0, 0));
+        price_valid.setText("Please Select Price");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -253,13 +289,14 @@ bill.setText("========================"+"\n"
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(5, 5, 5)
-                                        .addComponent(jLabel12))
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel1)
+                                            .addGap(5, 5, 5)
+                                            .addComponent(jLabel12))
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -268,7 +305,9 @@ bill.setText("========================"+"\n"
                                                 .addComponent(food_item, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jLabel4))
-                                            .addComponent(c_name, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(name_valid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(c_name, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)))
                                         .addGap(44, 44, 44)
                                         .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -276,7 +315,9 @@ bill.setText("========================"+"\n"
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel6)
                                         .addGap(18, 18, 18)
-                                        .addComponent(grand_total, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(grand_total, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(food_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(price_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(147, 147, 147))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -305,19 +346,25 @@ bill.setText("========================"+"\n"
                     .addComponent(jLabel1)
                     .addComponent(c_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
-                .addGap(23, 23, 23)
+                .addGap(3, 3, 3)
+                .addComponent(name_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
                     .addComponent(food_item, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(2, 2, 2)
+                .addComponent(food_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(grand_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                    .addComponent(grand_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addComponent(price_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -376,6 +423,11 @@ bill.setText("========================"+"\n"
     private void print_billActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_billActionPerformed
         //TODO add your handling code here:
                         try{
+                            if(c_name.getText().isEmpty())
+            {
+                name_valid.setVisible(true);
+            }
+                            else{
                                     bill.setText(bill.getText()+
                                                     "============================="+"\n"+"Grand Total"+"\t\t  "+ grand_total.getText()+
                                               "\n"+"============================="+"\n"
@@ -384,6 +436,7 @@ bill.setText("========================"+"\n"
             
                                     bill.print();
                                 }
+                        }
                         catch(Exception e)
                         {
                                     JOptionPane.showMessageDialog(null,"Bill not printed","Alert",JOptionPane.WARNING_MESSAGE);
@@ -392,7 +445,19 @@ bill.setText("========================"+"\n"
 
     private void Add_itemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add_itemsActionPerformed
         // TODO add your handling code here:
-         quantity.setText("1");
+        if(food_item.getText().isEmpty())
+        {
+            food_valid.setVisible(true);
+        }
+        if(price.getText().isEmpty())
+        {
+            price_valid.setVisible(true);
+        }
+        if(quantity.getText().isEmpty())
+        {
+            quantity.setText("1");
+        }
+        else{
         int price1 = Integer.parseInt(price.getText());
         int quantity1 = Integer.parseInt(quantity.getText());
         int total = price1*quantity1;
@@ -409,17 +474,21 @@ bill.setText("========================"+"\n"
                         bill.setText(
             
             
-                                        bill.getText()+food_item.getText()+"\t  "+quantity.getText()+"              "+price.getText()+"      "+total
+                                        bill.getText()+food_item.getText()+"\t  "+quantity.getText()+"             "+price.getText()+"      "+total
                                                 +"\n"
                                       );
 
         food_item.setText("");
         price.setText("");
         quantity.setText("");
+        }
     }//GEN-LAST:event_Add_itemsActionPerformed
 
     private void foodjTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_foodjTableMouseClicked
         // TODO add your handling code here:
+        name_valid.setVisible(false);
+        food_valid.setVisible(false);
+        price_valid.setVisible(false);
         int i= foodjTable.getSelectedRow();
         TableModel model = foodjTable.getModel();
         food_item.setText(model.getValueAt(i,0).toString());
@@ -435,6 +504,11 @@ bill.setText("========================"+"\n"
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
         try{
+            if(c_name.getText().isEmpty())
+            {
+                name_valid.setVisible(true);
+            }
+            else{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
             PreparedStatement ps = con.prepareStatement("Insert into sales(customer_name,grand_total,date) VALUES(?,?,?,?)");
@@ -446,6 +520,7 @@ bill.setText("========================"+"\n"
              ps.executeUpdate();
              JOptionPane.showMessageDialog(null, "Record Saved Successfully");
            }
+        }
         catch(Exception e)
         {
             JOptionPane.showMessageDialog(null, "Record Not Saved","Alert",JOptionPane.WARNING_MESSAGE);
@@ -501,6 +576,7 @@ bill.setText("========================"+"\n"
     private javax.swing.JButton cancel;
     private javax.swing.JButton clearBillDisplay;
     private javax.swing.JTextField food_item;
+    private javax.swing.JLabel food_valid;
     private javax.swing.JTable foodjTable;
     private javax.swing.JTextField grand_total;
     private javax.swing.JLabel jLabel1;
@@ -514,7 +590,9 @@ bill.setText("========================"+"\n"
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel name_valid;
     private javax.swing.JTextField price;
+    private javax.swing.JLabel price_valid;
     private javax.swing.JButton print_bill;
     private javax.swing.JTextField quantity;
     private javax.swing.JButton save;
