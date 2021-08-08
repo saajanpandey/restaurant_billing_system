@@ -7,12 +7,12 @@ package restaurant_billing_system;
 
 import javax.swing.*;
 import java.sql.*;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author Saajan
@@ -24,10 +24,14 @@ public class Waiter extends javax.swing.JFrame {
      */
     public Waiter() {
         initComponents();
-        setTitle("Add Waiter");
+        setTitle("Waiter");
         refreshTable();
+        name_valid.setVisible(false);
+        contact_valid.setVisible(false);
+        username_valid.setVisible(false);
+        password_valid.setVisible(false);
        contact.setDocument(new JTextFieldLimit(10));
-       
+       password.setDocument(new PasswordLimit(15));
     }
     class JTextFieldLimit extends PlainDocument {
   private int limit;
@@ -41,16 +45,47 @@ public class Waiter extends javax.swing.JFrame {
     this.limit = limit;
   }
 
-  @Override 
+ @Override
   public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
     if (str == null)
       return;
 
     if ((getLength() + str.length()) <= limit) {
+      super.insertString(offset, str.replaceAll("\\D++", ""), attr);
+    }
+  }
+}
+    
+  class PasswordLimit extends PlainDocument {
+  private int limit;
+ 
+  PasswordLimit(int limit) {
+    super();
+    this.limit = limit;
+  }
+
+  PasswordLimit(int limit, boolean upper) {
+    super();
+    this.limit = limit;
+  }
+
+ @Override
+  public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+    if (str == null)
+      return;
+
+    if ((getLength() + str.length()) <= limit ) {
       super.insertString(offset, str, attr);
     }
   }
 }
+    
+   public boolean passwordValidation(String password)
+   {
+        String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
+        boolean check=  password.matches(pattern);
+        return check;
+   }
     //refresh Table
     private void refreshTable(){
           try{
@@ -58,12 +93,13 @@ public class Waiter extends javax.swing.JFrame {
                    
                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
                    
-                   PreparedStatement ps = con.prepareStatement("Select id,name,contact from waiter");
+                   PreparedStatement ps = con.prepareStatement("Select id,name,contact,username from waiter");
                    ResultSet rs = ps.executeQuery();
                    waiter_jTable.setModel(DbUtils.resultSetToTableModel(rs));
                    waiter_jTable.getColumnModel().getColumn(0).setHeaderValue("ID");
                    waiter_jTable.getColumnModel().getColumn(1).setHeaderValue("Waiter Name");
                    waiter_jTable.getColumnModel().getColumn(2).setHeaderValue("Contact");
+                   waiter_jTable.getColumnModel().getColumn(3).setHeaderValue("Waiter Username");
            }
            catch(Exception e)
            {
@@ -103,8 +139,13 @@ public class Waiter extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        password_valid = new javax.swing.JLabel();
+        contact_valid = new javax.swing.JLabel();
+        name_valid = new javax.swing.JLabel();
+        username_valid = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Waiter", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
@@ -204,6 +245,18 @@ public class Waiter extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 0, 0));
         jLabel11.setText("*");
 
+        password_valid.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        password_valid.setForeground(new java.awt.Color(255, 0, 0));
+
+        contact_valid.setForeground(new java.awt.Color(255, 0, 0));
+        contact_valid.setText("Please Enter Contact Number");
+
+        name_valid.setForeground(new java.awt.Color(255, 0, 0));
+        name_valid.setText("Please Enter Waiter Name");
+
+        username_valid.setForeground(new java.awt.Color(255, 0, 0));
+        username_valid.setText("Please Enter Username");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -236,31 +289,33 @@ public class Waiter extends javax.swing.JFrame {
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel11))
-                                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(add_waiter)
-                        .addGap(18, 18, 18)
-                        .addComponent(update)
-                        .addGap(18, 18, 18)
-                        .addComponent(delete)
-                        .addGap(18, 18, 18)
-                        .addComponent(cancel))
+                                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(name_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(username_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addComponent(add_waiter)
+                                .addGap(18, 18, 18)
+                                .addComponent(update)
+                                .addGap(18, 18, 18)
+                                .addComponent(delete)
+                                .addGap(30, 30, 30)
+                                .addComponent(cancel))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jLabel6))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(367, 367, 367)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(contact_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(12, 12, 12)
                                 .addComponent(jLabel10)
                                 .addGap(44, 44, 44)
                                 .addComponent(contact, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(64, 64, 64)
-                                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(password_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -279,23 +334,31 @@ public class Waiter extends javax.swing.JFrame {
                     .addComponent(contact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10))
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(contact_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(name_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel11))
-                .addGap(39, 39, 39)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel11)
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(username_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(password_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add_waiter)
                     .addComponent(update)
                     .addComponent(delete)
                     .addComponent(cancel))
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -303,16 +366,16 @@ public class Waiter extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(22, 22, 22)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addContainerGap())
         );
 
         pack();
@@ -326,7 +389,37 @@ public class Waiter extends javax.swing.JFrame {
 
     private void add_waiterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_waiterActionPerformed
         // TODO add your handling code here:
+           
         try{
+             if(name.getText().isEmpty()){
+                    name_valid.setVisible(true);
+             }
+             if(username.getText().isEmpty())
+             {
+                 username_valid.setVisible(true);
+             }
+             if(contact.getText().isEmpty())
+             {
+                 contact_valid.setVisible(true);
+             }
+             if(passwordValidation(password.getText())== false)
+             {
+                 System.out.println(passwordValidation(password.getText()));
+                 if(password.getText().isEmpty())
+                 {
+                   password_valid.setVisible(true);
+                   password_valid.setText("Please Enter Password");
+                 }
+                 else{
+                      password_valid.setVisible(true);
+             password_valid.setText("Password should be less than 15 and more than 8 characters in length.\n" +
+"                                   Password should contain at least one upper case and one lower case alphabet.    \n" +
+"                                   Password should contain at least one number.\n" +
+"                                     Password should contain at least one special character.");
+                 }
+             }
+             else{
+                 
             Class.forName("com.mysql.cj.jdbc.Driver");
             
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
@@ -337,21 +430,13 @@ public class Waiter extends javax.swing.JFrame {
             ps.setString(2,username.getText());
             ps.setString(3,contact.getText());
             ps.setString(4,password.getText());
-//            ResultSet rs = ps.executeQuery();
-//            if(rs.next())
-//            {
-//                JOptionPane.showMessageDialog(null,"Waiter Account Created");
-//                name.setText("");
-//                username.setText("");
-//                contact.setText("");
-//                password.setText("");
-//            }
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null,"Waiter Account Created");
             name.setText("");
             username.setText("");
             contact.setText("");
             password.setText("");
+             }
         }
         
         catch(Exception e)
@@ -380,6 +465,10 @@ public class Waiter extends javax.swing.JFrame {
             name.setText("");
             contact.setText("");
             id.setText("");
+            add_waiter.setEnabled(true);
+            username.setEditable(true);
+            password.setEditable(true);
+            cancel.setEnabled(true);
            
         }
         catch(Exception e)
@@ -405,7 +494,10 @@ public class Waiter extends javax.swing.JFrame {
             name.setText("");
             contact.setText("");
             id.setText("");
-           
+            username.setEditable(true);
+            add_waiter.setEnabled(true);
+            password.setEditable(true);
+           cancel.setEnabled(true);
         }
         catch(Exception e)
         {
@@ -416,6 +508,12 @@ public class Waiter extends javax.swing.JFrame {
 
     private void waiter_jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_waiter_jTableMouseClicked
         // TODO add your handling code here:
+        name_valid.setVisible(false);
+        contact_valid.setVisible(false);
+        username_valid.setVisible(false);
+        password_valid.setVisible(false);
+        cancel.setEnabled(false);
+        add_waiter.setEnabled(false);
         int i= waiter_jTable.getSelectedRow();
         TableModel model = waiter_jTable.getModel();
         id.setText(model.getValueAt(i,0).toString());
@@ -465,6 +563,7 @@ public class Waiter extends javax.swing.JFrame {
     private javax.swing.JButton add_waiter;
     private javax.swing.JButton cancel;
     private javax.swing.JTextField contact;
+    private javax.swing.JLabel contact_valid;
     private javax.swing.JButton delete;
     private javax.swing.JTextField id;
     private javax.swing.JLabel jLabel1;
@@ -480,9 +579,12 @@ public class Waiter extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField name;
+    private javax.swing.JLabel name_valid;
     private javax.swing.JPasswordField password;
+    private javax.swing.JLabel password_valid;
     private javax.swing.JButton update;
     private javax.swing.JTextField username;
+    private javax.swing.JLabel username_valid;
     private javax.swing.JTable waiter_jTable;
     // End of variables declaration//GEN-END:variables
 }

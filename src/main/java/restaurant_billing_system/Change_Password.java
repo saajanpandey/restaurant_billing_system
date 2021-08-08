@@ -11,6 +11,9 @@ package restaurant_billing_system;
  */
 import javax.swing.*;
 import java.sql.*;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 
 public class Change_Password extends javax.swing.JFrame {
 
@@ -20,7 +23,42 @@ public class Change_Password extends javax.swing.JFrame {
     public Change_Password() {
         initComponents();
         setTitle("Change Password");
+        new_password.setDocument(new PasswordLimit(15));
+        old_pass.setDocument(new PasswordLimit(15));
+        username_valid.setVisible(false);
+        old_valid.setVisible(false);
+        new_valid.setVisible(false);
     }
+    
+    class PasswordLimit extends PlainDocument {
+  private int limit;
+ 
+  PasswordLimit(int limit) {
+    super();
+    this.limit = limit;
+  }
+
+  PasswordLimit(int limit, boolean upper) {
+    super();
+    this.limit = limit;
+  }
+
+ @Override
+  public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+    if (str == null)
+      return;
+
+    if ((getLength() + str.length()) <= limit ) {
+      super.insertString(offset, str, attr);
+    }
+  }
+}
+     public boolean passwordValidation(String password)
+   {
+        String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
+        boolean check=  password.matches(pattern);
+        return check;
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,6 +82,9 @@ public class Change_Password extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        username_valid = new javax.swing.JLabel();
+        old_valid = new javax.swing.JLabel();
+        new_valid = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -97,6 +138,16 @@ public class Change_Password extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("Please fill the marked field");
 
+        username_valid.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        username_valid.setForeground(new java.awt.Color(255, 0, 0));
+        username_valid.setText("Please Enter Username");
+
+        old_valid.setForeground(new java.awt.Color(255, 0, 0));
+        old_valid.setText("Please Enter Old Password");
+
+        new_valid.setForeground(new java.awt.Color(255, 0, 0));
+        new_valid.setText("Please Enter New Password");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -104,8 +155,18 @@ public class Change_Password extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(change)
+                        .addGap(38, 38, 38)
+                        .addComponent(back))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -113,49 +174,50 @@ public class Change_Password extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
-                                    .addComponent(jLabel9)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10))
-                            .addComponent(jLabel4))
-                        .addGap(36, 36, 36))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(change)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(new_password, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(old_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(back))
+                                    .addComponent(jLabel9))))
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(old_valid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(username, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(new_password, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(old_pass, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(username_valid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(new_valid, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(old_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel8)
+                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(username_valid)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
                     .addComponent(new_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
                     .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addGap(36, 36, 36)
+                .addGap(2, 2, 2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(old_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel10)
+                        .addComponent(old_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(new_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(change)
                     .addComponent(back))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,7 +234,7 @@ public class Change_Password extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -192,8 +254,45 @@ public class Change_Password extends javax.swing.JFrame {
 
     private void changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeActionPerformed
         // TODO add your handling code here:
+        
+        
         try{
-           
+               if(username.getText().isEmpty())
+        {
+            username_valid.setVisible(true);
+        }
+               if(passwordValidation(new_password.getText())== false)
+             {
+                
+                 if(new_password.getText().isEmpty())
+                 {
+                   new_valid.setVisible(true);
+                   new_valid.setText("Please Enter Password");
+                 }
+                 else{
+                      new_valid.setVisible(true);
+            new_valid.setText("Password should be less than 15 and more than 8 characters in length.\n" +
+"                                   Password should contain at least one upper case and one lower case alphabet.\n" +
+"                                   Password should contain at least one number.\n" +
+"                                     Password should contain at least one special character.");
+                 }
+             }
+               if(passwordValidation(old_pass.getText())==false)
+            {
+                if(old_pass.getText().isEmpty())
+                 {
+                   old_valid.setVisible(true);
+                   old_valid.setText("Please Enter Password");
+                 }
+                else{
+                      old_valid.setVisible(true);
+            old_valid.setText("Password should be less than 15 and more than 8 characters in length.\n" +
+"                                   Password should contain at least one upper case and one lower case alphabet.\n" +
+"                                   Password should contain at least one number.\n" +
+"                                     Password should contain at least one special character.");
+                 }
+            }
+           else{
             Class.forName("com.mysql.cj.jdbc.Driver");
            
            Connection con = DriverManager.getConnection
@@ -204,13 +303,6 @@ public class Change_Password extends javax.swing.JFrame {
            ps.setString(1,new_password.getText());
            ps.setString(2,username.getText());
            ps.setString(3,old_pass.getText());
-//           ResultSet rs = ps.executeQuery();
-//           if(rs.next())
-//           {
-//           JOptionPane.showMessageDialog(null,"Password Changed");
-//           password.setText("");
-//           username.setText("");
-//           }
             ps.executeUpdate();
            JOptionPane.showMessageDialog(null,"Password Changed");
            new_password.setText("");
@@ -221,7 +313,7 @@ public class Change_Password extends javax.swing.JFrame {
            lf.setVisible(true);
            
         }
-        
+        }
         catch(Exception e)
         {
             JOptionPane.showMessageDialog(null,"Password Not Changed","Alert",JOptionPane.WARNING_MESSAGE);
@@ -275,7 +367,10 @@ public class Change_Password extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField new_password;
+    private javax.swing.JLabel new_valid;
     private javax.swing.JPasswordField old_pass;
+    private javax.swing.JLabel old_valid;
     private javax.swing.JTextField username;
+    private javax.swing.JLabel username_valid;
     // End of variables declaration//GEN-END:variables
 }

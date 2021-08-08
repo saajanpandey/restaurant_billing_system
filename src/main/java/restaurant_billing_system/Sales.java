@@ -22,7 +22,7 @@ public class Sales extends javax.swing.JFrame {
      */
     public Sales() {
         initComponents();
-        setTitle("Sales Report");
+        setTitle("Total Sales");
         refreshTable();       
         getSum();
     }
@@ -32,14 +32,13 @@ public class Sales extends javax.swing.JFrame {
                    
                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
                    
-                   PreparedStatement ps = con.prepareStatement("Select id,customer_name,contact_number,date,grand_total from sales");
+                   PreparedStatement ps = con.prepareStatement("Select id,customer_name,date,grand_total from sales");
                    ResultSet rs = ps.executeQuery();
                    sales_jTable.setModel(DbUtils.resultSetToTableModel(rs));
                    sales_jTable.getColumnModel().getColumn(0).setHeaderValue("ID");
                    sales_jTable.getColumnModel().getColumn(1).setHeaderValue("Customer Name");
-                   sales_jTable.getColumnModel().getColumn(2).setHeaderValue("Mobile Number");
-                   sales_jTable.getColumnModel().getColumn(3).setHeaderValue("Date");
-                   sales_jTable.getColumnModel().getColumn(4).setHeaderValue("Total");
+                   sales_jTable.getColumnModel().getColumn(2).setHeaderValue("Date");
+                   sales_jTable.getColumnModel().getColumn(3).setHeaderValue("Total");
            }
            catch(Exception e)
            {
@@ -53,7 +52,7 @@ public class Sales extends javax.swing.JFrame {
         int sum=0;
         for(int i=0;i<sales_jTable.getRowCount();i++)
         {
-             sum = sum +Integer.parseInt(sales_jTable.getValueAt(i,4).toString());
+             sum = sum +Integer.parseInt(sales_jTable.getValueAt(i,3).toString());
         }
         String total = String.valueOf(sum);
         total_sales.setText(total);

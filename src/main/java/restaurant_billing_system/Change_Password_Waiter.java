@@ -6,6 +6,9 @@
 package restaurant_billing_system;
 import javax.swing.*;
 import java.sql.*;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 
 /**
  *
@@ -19,8 +22,42 @@ public class Change_Password_Waiter extends javax.swing.JFrame {
     public Change_Password_Waiter() {
         initComponents();
         setTitle("Change Password Waiter");
+        new_password.setDocument(new PasswordLimit(15));
+        old_pass.setDocument(new PasswordLimit(15));
+        username_valid.setVisible(false);
+        old_valid.setVisible(false);
+        new_valid.setVisible(false);
     }
+    
+    class PasswordLimit extends PlainDocument {
+  private int limit;
+ 
+  PasswordLimit(int limit) {
+    super();
+    this.limit = limit;
+  }
 
+  PasswordLimit(int limit, boolean upper) {
+    super();
+    this.limit = limit;
+  }
+
+ @Override
+  public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+    if (str == null)
+      return;
+
+    if ((getLength() + str.length()) <= limit ) {
+      super.insertString(offset, str, attr);
+    }
+  }
+}
+     public boolean passwordValidation(String password)
+   {
+        String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
+        boolean check=  password.matches(pattern);
+        return check;
+   }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,6 +80,9 @@ public class Change_Password_Waiter extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        username_valid = new javax.swing.JLabel();
+        old_valid = new javax.swing.JLabel();
+        new_valid = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -96,6 +136,16 @@ public class Change_Password_Waiter extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
         jLabel12.setText("*");
 
+        username_valid.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        username_valid.setForeground(new java.awt.Color(255, 0, 0));
+        username_valid.setText("Please Enter Username");
+
+        old_valid.setForeground(new java.awt.Color(255, 0, 0));
+        old_valid.setText("Please Enter Old Password");
+
+        new_valid.setForeground(new java.awt.Color(255, 0, 0));
+        new_valid.setText("Please Enter New Password");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -103,36 +153,38 @@ public class Change_Password_Waiter extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel11))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(jLabel10))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel12)))
-                                .addGap(61, 61, 61))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(change)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addComponent(jLabel9)
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel10))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel11))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel12)))
+                        .addGap(61, 61, 61)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(new_password, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(old_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(back2)))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(username_valid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(old_valid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(new_valid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                            .addComponent(old_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(username)
+                            .addComponent(new_password)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(69, 69, 69)
-                        .addComponent(jLabel4)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(change)
+                        .addGap(18, 18, 18)
+                        .addComponent(back2)))
+                .addGap(66, 66, 66))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,20 +197,26 @@ public class Change_Password_Waiter extends javax.swing.JFrame {
                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
+                .addComponent(username_valid)
+                .addGap(11, 11, 11)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(old_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel11)
+                    .addComponent(old_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(old_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
                     .addComponent(new_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
                     .addComponent(jLabel12))
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(new_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(change)
                     .addComponent(back2))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -168,14 +226,14 @@ public class Change_Password_Waiter extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -184,14 +242,49 @@ public class Change_Password_Waiter extends javax.swing.JFrame {
     private void back2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back2ActionPerformed
         // TODO add your handling code here:]
         this.dispose();
-        Waiter_DashBoard wd= new Waiter_DashBoard();
+        Waiter_DashBoard wd = new Waiter_DashBoard();
         wd.setVisible(true);
     }//GEN-LAST:event_back2ActionPerformed
 
     private void changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeActionPerformed
         // TODO add your handling code here:
         try{
-
+            if(username.getText().isEmpty())
+            {
+                username_valid.setVisible(true);
+            }
+            if(passwordValidation(old_pass.getText())==false)
+            {
+                if(old_pass.getText().isEmpty())
+                 {
+                   old_valid.setVisible(true);
+                   old_valid.setText("Please Enter Password");
+                 }
+                else{
+                      old_valid.setVisible(true);
+            old_valid.setText("Password should be less than 15 and more than 8 characters in length.\n" +
+"                                   Password should contain at least one upper case and one lower case alphabet.\n" +
+"                                   Password should contain at least one number.\n" +
+"                                     Password should contain at least one special character.");
+                 }
+            }
+            if(passwordValidation(new_password.getText())== false)
+             {
+                
+                 if(new_password.getText().isEmpty())
+                 {
+                   new_valid.setVisible(true);
+                   new_valid.setText("Please Enter Password");
+                 }
+                 else{
+                      new_valid.setVisible(true);
+            new_valid.setText("Password should be less than 15 and more than 8 characters in length.\n" +
+"                                   Password should contain at least one upper case and one lower case alphabet.\n" +
+"                                   Password should contain at least one number.\n" +
+"                                     Password should contain at least one special character.");
+                 }
+             }
+            else{
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             Connection con = DriverManager.getConnection
@@ -218,6 +311,7 @@ public class Change_Password_Waiter extends javax.swing.JFrame {
             Login_Form lf = new Login_Form();
             lf.setVisible(true);
 
+        }
         }
 
         catch(Exception e)
@@ -277,7 +371,10 @@ public class Change_Password_Waiter extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField new_password;
+    private javax.swing.JLabel new_valid;
     private javax.swing.JPasswordField old_pass;
+    private javax.swing.JLabel old_valid;
     private javax.swing.JTextField username;
+    private javax.swing.JLabel username_valid;
     // End of variables declaration//GEN-END:variables
 }

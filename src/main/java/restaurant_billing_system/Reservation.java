@@ -25,6 +25,7 @@ public class Reservation extends javax.swing.JFrame {
     public Reservation() {
         initComponents();
         refreshTable();
+        setTitle("Reservation Cancelation");
     }
     
      private void refreshTable(){
@@ -204,6 +205,7 @@ public class Reservation extends javax.swing.JFrame {
 
     private void reservation_jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reservation_jTableMouseClicked
         // TODO add your handling code here:
+       
         int i= reservation_jTable.getSelectedRow();
         TableModel model = reservation_jTable.getModel();
         r_id.setText(model.getValueAt(i,0).toString());
