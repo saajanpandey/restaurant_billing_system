@@ -253,21 +253,21 @@ public class Change_Password_Waiter extends javax.swing.JFrame {
             {
                 username_valid.setVisible(true);
             }
-            if(passwordValidation(old_pass.getText())==false)
-            {
+//            if(passwordValidation(old_pass.getText())==false)
+//            {
                 if(old_pass.getText().isEmpty())
                  {
                    old_valid.setVisible(true);
                    old_valid.setText("Please Enter Password");
                  }
-                else{
-                      old_valid.setVisible(true);
-            old_valid.setText("Password should be less than 15 and more than 8 characters in length.\n" +
-"                                   Password should contain at least one upper case and one lower case alphabet.\n" +
-"                                   Password should contain at least one number.\n" +
-"                                     Password should contain at least one special character.");
-                 }
-            }
+//                else{
+//                      old_valid.setVisible(true);
+//            old_valid.setText("Password should be less than 15 and more than 8 characters in length.\n" +
+//"                                   Password should contain at least one upper case and one lower case alphabet.\n" +
+//"                                   Password should contain at least one number.\n" +
+//"                                     Password should contain at least one special character.");
+//                 }
+            //}
             if(passwordValidation(new_password.getText())== false)
              {
                 

@@ -32,6 +32,7 @@ public class Take_Order extends javax.swing.JFrame {
         initComponents();
         setTitle("Take Order");
         billHeader();
+        print_bill.setEnabled(false);
         name_valid.setVisible(false);
         price_valid.setVisible(false);
         food_valid.setVisible(false);
@@ -511,14 +512,15 @@ bill.setText("========================"+"\n"
             else{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rbs","root","");
-            PreparedStatement ps = con.prepareStatement("Insert into sales(customer_name,grand_total,date) VALUES(?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("Insert into sales(customer_name,grand_total,date) VALUES(?,?,?)");
             ps.setString(1,c_name.getText());
             int grandTotal = Integer.parseInt(grand_total.getText());
-            ps.setInt(3,grandTotal);
+            ps.setInt(2,grandTotal);
             java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
-             ps.setDate(4,sqlDate);
+             ps.setDate(3,sqlDate);
              ps.executeUpdate();
              JOptionPane.showMessageDialog(null, "Record Saved Successfully");
+             print_bill.setEnabled(true);
            }
         }
         catch(Exception e)
